@@ -1,8 +1,10 @@
 import HackerBackground from "@/components/HackerBackground";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
+import AboutSection from "@/components/AboutSection";
 import ServicesSection from "@/components/ServicesSection";
-import PortfolioSection from "@/components/PortfolioSection";
+import CompetitionSection from "@/components/CompetitionSection";
+import FAQSection from "@/components/FAQSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
@@ -11,14 +13,16 @@ const Index = () => {
     <div className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
       {/* Animated hacker background */}
       <HackerBackground />
-      
+
       {/* Main content */}
       <div className="relative z-10">
         <Header />
         <main>
           <HeroSection />
+          <AboutSection />
           <ServicesSection />
-          <PortfolioSection />
+          <CompetitionSection />
+          <FAQSection />
           <ContactSection />
         </main>
         <Footer />

@@ -63,7 +63,7 @@ export default {
         },
       },
       fontFamily: {
-        display: ["'Playfair Display'", "serif"],
+        display: ["'Seriguela'", "sans-serif"],
         japanese: ["'Dela Gothic One'", "sans-serif"],
         mono: ["'Fira Code'", "monospace"],
       },

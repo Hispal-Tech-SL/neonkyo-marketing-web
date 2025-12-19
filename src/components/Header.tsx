@@ -6,23 +6,27 @@ const Header = () => {
 
   const navItems = [
     { name: "Home", href: "#home" },
+    { name: "About", href: "#about" },
     { name: "Services", href: "#services" },
-    { name: "Portfolio", href: "#portfolio" },
+    { name: "FAQ's", href: "#faqs" },
     { name: "Contact", href: "#contact" },
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-primary/20">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-primary/20">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <a href="#home" className="flex items-center gap-2 group">
-            <span className="font-japanese text-xl md:text-2xl text-primary neon-text group-hover:animate-pulse-neon transition-all">
-              ネオン
-            </span>
-            <span className="font-display text-lg md:text-xl text-foreground italic">
-              NEONKYO
-            </span>
+            <span className="text-primary text-3xl md:text-4xl">京</span>
+            <div>
+              <span className="font-display text-xl md:text-2xl text-primary neon-text">
+                neonkyo
+              </span>
+              <span className="font-japanese text-xs md:text-sm text-primary/80 block">
+                スタジオ
+              </span>
+            </div>
           </a>
 
           {/* Desktop Navigation */}
@@ -31,7 +35,7 @@ const Header = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="font-mono text-sm uppercase tracking-wider text-muted-foreground hover:text-primary transition-colors relative group"
+                className="font-mono text-sm uppercase tracking-wider text-primary/60 hover:text-primary transition-colors relative group"
               >
                 {item.name}
                 <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary group-hover:w-full transition-all duration-300" />
@@ -41,7 +45,7 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-foreground p-2"
+            className="md:hidden text-primary p-2"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -56,7 +60,7 @@ const Header = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="block py-3 font-mono text-sm uppercase tracking-wider text-muted-foreground hover:text-primary transition-colors"
+                className="block py-3 font-mono text-sm uppercase tracking-wider text-primary/60 hover:text-primary transition-colors"
                 onClick={() => setIsMenuOpen(false)}
                 style={{ animationDelay: `${index * 100}ms` }}
               >

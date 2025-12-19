@@ -1,98 +1,100 @@
-import { Zap, Target, Palette, Code, TrendingUp, Video } from "lucide-react";
-
 const services = [
   {
-    icon: Zap,
-    title: "Digital Strategy",
-    japanese: "戦略",
-    description: "Data-driven marketing strategies that penetrate the noise and reach your target audience.",
+    icon: "ESPECIALISTAS",
+    title: "ESPECIALISTAS",
+    description: "Nuestra agencia está especializada en branding y desarrollo de marcas, ofreciendo asesoramiento de alto nivel para todo tipo de proyectos.",
+    label: "SPECIALIST"
   },
   {
-    icon: Palette,
-    title: "Brand Identity",
-    japanese: "ブランド",
-    description: "Creating memorable visual identities that stand out in the digital landscape.",
+    icon: "100% DIGITAL",
+    title: "100% DIGITAL",
+    description: "Apostamos por un modelo de negocio íntegramente digital. Si bien contamos con sede física, optamos por un modelo de teletrabajo y citas telemáticas.",
+    label: "DIGITAL"
   },
   {
-    icon: Code,
-    title: "Web Development",
-    japanese: "開発",
-    description: "Cutting-edge websites and applications built for the future.",
-  },
-  {
-    icon: Target,
-    title: "Paid Advertising",
-    japanese: "広告",
-    description: "Precision-targeted campaigns across all major platforms.",
-  },
-  {
-    icon: TrendingUp,
-    title: "SEO & Analytics",
-    japanese: "分析",
-    description: "Deep insights and optimization for maximum organic reach.",
-  },
-  {
-    icon: Video,
-    title: "Content Creation",
-    japanese: "コンテンツ",
-    description: "Engaging multimedia content that tells your story.",
+    icon: "AI POWERED",
+    title: "AI POWERED",
+    description: "Entrenamos nuestros propios modelos de Inteligencia Artificial de última generación y los utilizamos para desarrollar estrategias avanzadas de comunicación.",
+    label: "AI POWERED"
   },
 ];
 
 const ServicesSection = () => {
   return (
-    <section id="services" className="relative py-24 md:py-32 px-4">
+    <section id="services" className="relative py-24 md:py-32 px-4 bg-black">
       <div className="container mx-auto max-w-6xl">
         {/* Section header */}
         <div className="text-center mb-16">
-          <span className="font-mono text-xs text-primary/60 tracking-[0.3em] uppercase">
-            // Services
-          </span>
-          <h2 className="font-display text-4xl md:text-6xl text-foreground italic mt-4 mb-2">
-            What We <span className="text-primary neon-text">Execute</span>
+          <h2 className="font-display text-4xl md:text-6xl text-white mb-4">
+            || SOMOS LO QUE NECESITAS
           </h2>
-          <span className="font-japanese text-xl text-primary/60">サービス</span>
         </div>
 
         {/* Services grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {services.map((service, index) => (
             <div
               key={service.title}
-              className="group relative p-6 bg-card/50 border border-primary/10 hover:border-primary/50 transition-all duration-500 hover:shadow-neon-sm"
-              style={{ animationDelay: `${index * 100}ms` }}
+              className="group relative p-8 bg-black border-2 border-primary hover:border-primary/80 transition-all duration-300"
             >
-              {/* Corner accent */}
-              <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-primary/30 group-hover:border-primary transition-colors" />
-              <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-primary/30 group-hover:border-primary transition-colors" />
-
-              {/* Icon */}
-              <div className="mb-4 relative">
-                <service.icon 
-                  size={40} 
-                  className="text-primary group-hover:text-accent transition-colors duration-300" 
-                  strokeWidth={1.5}
-                />
-                <div className="absolute -top-2 -left-2 font-mono text-xs text-muted-foreground">
-                  0{index + 1}
+              {/* Decorative brackets */}
+              <div className="flex items-center justify-center mb-6">
+                <span className="text-primary text-2xl">┌</span>
+                <div className="mx-4">
+                  {/* Icon using SVG from assets */}
+                  {index === 0 && (
+                    <img
+                      src="/assets/icons/Grupo 263.svg"
+                      alt="Specialists"
+                      className="w-16 h-16 mx-auto"
+                    />
+                  )}
+                  {index === 1 && (
+                    <img
+                      src="/assets/icons/Grupo 264.svg"
+                      alt="100% Digital"
+                      className="w-16 h-16 mx-auto"
+                    />
+                  )}
+                  {index === 2 && (
+                    <img
+                      src="/assets/icons/Grupo 265.svg"
+                      alt="AI Powered"
+                      className="w-16 h-16 mx-auto"
+                    />
+                  )}
                 </div>
+                <span className="text-primary text-2xl">┐</span>
               </div>
 
               {/* Title */}
-              <h3 className="font-mono text-lg text-foreground mb-1 group-hover:text-primary transition-colors">
+              <h3 className="font-mono text-xl text-primary mb-4 text-center uppercase">
                 {service.title}
               </h3>
-              <span className="font-japanese text-sm text-primary/60 block mb-3">
-                {service.japanese}
-              </span>
 
               {/* Description */}
-              <p className="font-mono text-sm text-muted-foreground leading-relaxed">
+              <p className="font-mono text-sm text-white/80 leading-relaxed mb-6 text-center">
                 {service.description}
               </p>
 
-              {/* Hover line */}
-              <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-500" />
+              {/* CTA Button */}
+              <div className="text-center">
+                <a
+                  href="#contact"
+                  className="inline-block px-6 py-2 bg-accent text-white font-mono text-sm uppercase hover:bg-accent/90 transition-all duration-300"
+                >
+                  SABER MÁS
+                </a>
+              </div>
+
+              {/* Bottom brackets */}
+              <div className="flex items-center justify-center mt-6">
+                <span className="text-primary text-2xl">└</span>
+                <span className="font-mono text-xs text-primary/60 mx-4 uppercase">
+                  &lt;&lt; {service.label} &gt;&gt;
+                </span>
+                <span className="text-primary text-2xl">┘</span>
+              </div>
             </div>
           ))}
         </div>

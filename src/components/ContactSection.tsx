@@ -1,91 +1,77 @@
-import { Mail, MessageCircle, Globe, ArrowUpRight } from "lucide-react";
-
 const ContactSection = () => {
   return (
-    <section id="contact" className="relative py-24 md:py-32 px-4">
-      <div className="container mx-auto max-w-4xl">
+    <section
+      id="contact"
+      className="relative py-24 md:py-32 px-4 bg-accent overflow-hidden"
+      style={{
+        clipPath: "polygon(0 40px, 40px 40px, 45px 30px, 120px 30px, 125px 40px, 300px 40px, 305px 30px, 345px 30px, 350px 40px, 100% 40px, 100% 100%, 85% 100%, 80% calc(100% - 60px), 20% calc(100% - 60px), 15% 100%, 0 100%)",
+        marginTop: "-40px"
+      }}
+    >
+      {/* Grid Pattern Layer - More visible dots */}
+      <div className="absolute inset-0 bg-grid-cyber opacity-40 pointer-events-none" />
+
+      <div className="container mx-auto max-w-5xl relative z-10">
         {/* Section header */}
-        <div className="text-center mb-16">
-          <span className="font-mono text-xs text-primary/60 tracking-[0.3em] uppercase">
-            // Contact
-          </span>
-          <h2 className="font-display text-4xl md:text-6xl text-foreground italic mt-4 mb-2">
-            Let's <span className="text-primary neon-text">Connect</span>
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="font-display text-5xl md:text-[6rem] lg:text-[7rem] text-white mb-6 tracking-tight leading-none italic transform -skew-x-6">
+            || CONTACTO
           </h2>
-          <span className="font-japanese text-xl text-primary/60">連絡</span>
+
+          <p className="font-mono text-lg md:text-xl text-white mb-2 font-bold tracking-[0.15em]">
+            WE ARE CURRENTLY WORKING WORLDWIDE
+          </p>
+          <p className="font-mono text-[9px] md:text-[10px] text-white/70 tracking-[0.25em] uppercase">
+            &gt;&gt; SO YOU CAN CONTACT US ANY TIME, ANY HOUR &lt;&lt;
+          </p>
         </div>
 
-        {/* Contact info */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          {/* Email */}
-          <a
-            href="mailto:neonkyostudio@gmail.com"
-            className="group p-6 border border-primary/20 hover:border-primary transition-all duration-300 hover:shadow-neon-sm text-center"
-          >
-            <Mail className="mx-auto mb-4 text-primary" size={32} strokeWidth={1.5} />
-            <span className="font-mono text-xs text-muted-foreground uppercase tracking-wider block mb-2">
-              Email
-            </span>
-            <span className="font-mono text-sm text-foreground group-hover:text-primary transition-colors break-all">
-              neonkyostudio@gmail.com
-            </span>
-            <ArrowUpRight className="mx-auto mt-4 text-primary opacity-0 group-hover:opacity-100 transition-opacity" size={16} />
-          </a>
+        {/* Email Box with Corners - Much larger brackets */}
+        <div className="flex justify-center mb-12">
+          <div className="relative inline-block px-20 py-16 md:px-32 md:py-20">
+            {/* L-brackets - Much larger and further from content */}
+            <div className="absolute -top-4 -left-4 w-16 h-16 md:w-24 md:h-24 border-t-[3px] border-l-[3px] border-white" />
+            <div className="absolute -top-4 -right-4 w-16 h-16 md:w-24 md:h-24 border-t-[3px] border-r-[3px] border-white" />
+            <div className="absolute -bottom-4 -left-4 w-16 h-16 md:w-24 md:h-24 border-b-[3px] border-l-[3px] border-white" />
+            <div className="absolute -bottom-4 -right-4 w-16 h-16 md:w-24 md:h-24 border-b-[3px] border-r-[3px] border-white" />
 
-          {/* WhatsApp */}
+            {/* Email */}
+            <div className="text-center">
+              <a
+                href="mailto:neonkyostudio@gmail.com"
+                className="font-display text-3xl md:text-5xl lg:text-6xl text-white hover:opacity-80 transition-opacity tracking-tight block italic transform -skew-x-6"
+              >
+                NEONKYOSTUDIO@GMAIL.COM
+              </a>
+              <p className="font-mono text-[9px] md:text-[10px] text-white/80 mt-8 md:mt-12 tracking-[0.35em] uppercase">
+                ESTIMATED RESPONSE TIME: 24 HOURS
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* WhatsApp Button - Darker background, specific shape */}
+        <div className="flex justify-center mt-8">
           <a
             href="https://wa.me/34695283616"
             target="_blank"
             rel="noopener noreferrer"
-            className="group p-6 border border-primary/20 hover:border-primary transition-all duration-300 hover:shadow-neon-sm text-center"
+            className="group relative px-6 py-2.5 bg-[#1a0f00]/90 border border-primary/20 hover:bg-[#2a1a00] transition-all duration-300"
+            style={{
+              clipPath: "polygon(12px 0, 100% 0, 100% 100%, 0 100%, 0 12px)"
+            }}
           >
-            <MessageCircle className="mx-auto mb-4 text-primary" size={32} strokeWidth={1.5} />
-            <span className="font-mono text-xs text-muted-foreground uppercase tracking-wider block mb-2">
-              WhatsApp
-            </span>
-            <span className="font-mono text-sm text-foreground group-hover:text-primary transition-colors">
-              +34 695 283 616
-            </span>
-            <ArrowUpRight className="mx-auto mt-4 text-primary opacity-0 group-hover:opacity-100 transition-opacity" size={16} />
+            <div className="flex items-center gap-3 text-white">
+              <img
+                src="/assets/icons/iconmonstr-whatsapp-1.svg"
+                alt="WhatsApp"
+                className="w-4 h-4 invert"
+              />
+              <span className="font-mono text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-primary">
+                ¿ERES DE ESPAÑA?
+              </span>
+            </div>
           </a>
-
-          {/* Website */}
-          <a
-            href="https://www.neonkyostudio.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group p-6 border border-primary/20 hover:border-primary transition-all duration-300 hover:shadow-neon-sm text-center"
-          >
-            <Globe className="mx-auto mb-4 text-primary" size={32} strokeWidth={1.5} />
-            <span className="font-mono text-xs text-muted-foreground uppercase tracking-wider block mb-2">
-              Website
-            </span>
-            <span className="font-mono text-sm text-foreground group-hover:text-primary transition-colors">
-              www.neonkyostudio.com
-            </span>
-            <ArrowUpRight className="mx-auto mt-4 text-primary opacity-0 group-hover:opacity-100 transition-opacity" size={16} />
-          </a>
-        </div>
-
-        {/* CTA */}
-        <div className="text-center">
-          <div className="inline-block p-8 border border-primary/30 relative">
-            {/* Corner decorations */}
-            <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-primary" />
-            <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-primary" />
-            <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-primary" />
-            <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-primary" />
-
-            <p className="font-mono text-sm text-muted-foreground mb-4">
-              Ready to hack the future of your brand?
-            </p>
-            <span className="font-japanese text-3xl md:text-4xl text-primary neon-text animate-pulse-neon">
-              始めましょう
-            </span>
-            <p className="font-display text-xl md:text-2xl text-foreground italic mt-2">
-              Let's Begin
-            </p>
-          </div>
         </div>
       </div>
     </section>

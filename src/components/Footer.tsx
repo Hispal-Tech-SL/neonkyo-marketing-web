@@ -1,56 +1,55 @@
 const Footer = () => {
-  const asciiArt = `
-███╗   ██╗███████╗ ██████╗ ███╗   ██╗██╗  ██╗██╗   ██╗ ██████╗ 
-████╗  ██║██╔════╝██╔═══██╗████╗  ██║██║ ██╔╝╚██╗ ██╔╝██╔═══██╗
-██╔██╗ ██║█████╗  ██║   ██║██╔██╗ ██║█████╔╝  ╚████╔╝ ██║   ██║
-██║╚██╗██║██╔══╝  ██║   ██║██║╚██╗██║██╔═██╗   ╚██╔╝  ██║   ██║
-██║ ╚████║███████╗╚██████╔╝██║ ╚████║██║  ██╗   ██║   ╚██████╔╝
-╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝  ╚═╝   ╚═╝    ╚═════╝ 
-`;
-
   return (
-    <footer className="relative py-12 px-4 border-t border-primary/20 bg-background">
-      <div className="container mx-auto max-w-6xl">
-        {/* ASCII Art */}
-        <div className="mb-8 overflow-x-auto">
-          <pre className="font-mono text-[6px] md:text-[8px] lg:text-xs text-primary/40 text-center whitespace-pre leading-tight">
-            {asciiArt}
-          </pre>
+    <footer
+      className="relative pb-16 pt-24 px-4 bg-black overflow-hidden"
+      style={{
+        clipPath: "polygon(0 60px, 15% 60px, 20% 0, 80% 0, 85% 60px, 100% 60px, 100% 100%, 0 100%)",
+        marginTop: "-60px"
+      }}
+    >
+      <div className="relative z-10 container mx-auto max-w-6xl">
+        {/* Legal links & Socials aligned */}
+        <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 mt-8">
+          <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
+            <a
+              href="#"
+              className="font-mono text-[9px] md:text-[10px] text-white/50 hover:text-white transition-colors uppercase tracking-[0.2em]"
+            >
+              &gt; POLÍTICA DE PRIVACIDAD
+            </a>
+            <a
+              href="#"
+              className="font-mono text-[9px] md:text-[10px] text-white/50 hover:text-white transition-colors uppercase tracking-[0.2em]"
+            >
+              &gt; COOKIES
+            </a>
+            <a
+              href="#"
+              className="font-mono text-[9px] md:text-[10px] text-white/50 hover:text-white transition-colors uppercase tracking-[0.2em]"
+            >
+              &gt; AVISO LEGAL Y CONDICIONES DE USO
+            </a>
+          </div>
+
+          {/* Social icons inline with links */}
+          <div className="flex items-center gap-6">
+            <a href="#" target="_blank" rel="noopener noreferrer" className="hover:opacity-60 transition-opacity">
+              <img src="/assets/icons/iconmonstr-whatsapp-1.svg" alt="WhatsApp" className="w-5 h-5 invert" />
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" className="hover:opacity-60 transition-opacity">
+              <img src="/assets/icons/youtube-svgrepo-com.svg" alt="YouTube" className="w-5 h-5 invert" />
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" className="hover:opacity-60 transition-opacity">
+              <img src="/assets/icons/Grupo 54.svg" alt="Instagram" className="w-5 h-5 invert" />
+            </a>
+          </div>
         </div>
 
-        {/* Divider */}
-        <div className="flex items-center justify-center gap-4 mb-8">
-          <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/30" />
-          <span className="font-japanese text-primary/40">電脳</span>
-          <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/30" />
-        </div>
-
-        {/* Footer content */}
-        <div className="text-center">
-          <p className="font-mono text-xs text-muted-foreground mb-2">
-            &copy; 2024 Neonkyo Studio. All systems operational.
+        {/* Copyright */}
+        <div className="text-center opacity-20 mt-12 pb-4">
+          <p className="font-mono text-[8px] md:text-[9px] text-white uppercase tracking-[0.4em]">
+            NEONKYO (c) 2024 All rights reserved
           </p>
-          <p className="font-mono text-xs text-muted-foreground/60 mb-4">
-            <span className="text-primary">&gt;</span> The Future of Advertising <span className="text-primary">&lt;</span>
-          </p>
-        </div>
-
-        {/* Mobile warning */}
-        <div className="mt-8 text-center">
-          <p className="font-mono text-xs text-accent/80 animate-pulse">
-            ⚠ FLIP YOUR PHONE TO SEE PROPERLY ⚠
-          </p>
-        </div>
-
-        {/* Bottom decoration */}
-        <div className="mt-8 flex items-center justify-center gap-2">
-          <span className="w-2 h-2 bg-primary/60" />
-          <span className="w-2 h-2 bg-primary/40" />
-          <span className="w-2 h-2 bg-primary/20" />
-          <span className="font-mono text-xs text-primary/40">SYSTEM_STATUS: ONLINE</span>
-          <span className="w-2 h-2 bg-primary/20" />
-          <span className="w-2 h-2 bg-primary/40" />
-          <span className="w-2 h-2 bg-primary/60" />
         </div>
       </div>
     </footer>
