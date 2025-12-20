@@ -41,6 +41,13 @@
   font-family: 'Seriguela';
   src: url('/assets/fonts/Seriguela-PosterRevIt.otf') format('opentype');
   font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Seriguela';
+  src: url('/assets/fonts/Seriguela-PosterRevIt.otf') format('opentype');
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -222,6 +229,18 @@
     background-image:
       radial-gradient(circle, rgba(255, 255, 255, 0.25) 1px, transparent 1px);
     background-size: 20px 20px;
+  }
+
+  /* Thin display text for Seriguela font */
+  .text-outline-thin {
+    text-shadow:
+      -0.5px -0.5px 0 currentColor,
+      0.5px -0.5px 0 currentColor,
+      -0.5px 0.5px 0 currentColor,
+      0.5px 0.5px 0 currentColor;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
   }
 }
 

@@ -14,7 +14,7 @@ const ContactSection = () => {
       <div className="container mx-auto max-w-5xl relative z-10">
         {/* Section header */}
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="font-display text-5xl md:text-[6rem] lg:text-[7rem] text-white mb-6 tracking-tight leading-none italic transform -skew-x-6">
+          <h2 className="font-display text-5xl md:text-[6rem] lg:text-[7rem] text-white mb-6 tracking-wide leading-none italic transform -skew-x-6 scale-x-95" style={{fontWeight: 100}}>
             || CONTACTO
           </h2>
 
@@ -39,11 +39,12 @@ const ContactSection = () => {
             <div className="text-center">
               <a
                 href="mailto:neonkyostudio@gmail.com"
-                className="font-display text-3xl md:text-5xl lg:text-6xl text-white hover:opacity-80 transition-opacity tracking-tight block italic transform -skew-x-6"
+                className="font-display text-4xl md:text-6xl lg:text-7xl text-white hover:opacity-80 transition-opacity tracking-wide block italic transform -skew-x-6 scale-x-95"
+                style={{fontWeight: 100}}
               >
                 NEONKYOSTUDIO@GMAIL.COM
               </a>
-              <p className="font-mono text-[9px] md:text-[10px] text-white/80 mt-8 md:mt-12 tracking-[0.35em] uppercase">
+              <p className="font-mono text-[10px] md:text-[11px] text-white mt-8 md:mt-12 tracking-[0.35em] uppercase">
                 ESTIMATED RESPONSE TIME: 24 HOURS
               </p>
             </div>
@@ -62,7 +63,7 @@ const ContactSection = () => {
               href="https://wa.me/34695283616"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative px-10 py-3 bg-black/30 hover:bg-black/50 transition-all duration-300 flex items-center gap-3 backdrop-blur-sm"
+              className="group relative px-10 py-3 bg-black/80 flex items-center gap-3 backdrop-blur-sm"
               style={{
                 clipPath: "polygon(27px 0, calc(100% - 27px) 0, 100% 13px, 100% calc(100% - 13px), calc(100% - 27px) 100%, 27px 100%, 0 calc(100% - 13px), 0 13px)"
               }}
