@@ -8,16 +8,19 @@ const HeroSection = () => {
   const [containerWidth, setContainerWidth] = useState(0);
   const [isFullyUnlocked, setIsFullyUnlocked] = useState(false);
   const sliderRef = useRef<HTMLDivElement>(null);
+  const mobileSliderRef = useRef<HTMLDivElement>(null);
 
   // Capturar ancho del contenedor
   useEffect(() => {
-    if (sliderRef.current) {
-      setContainerWidth(sliderRef.current.offsetWidth);
+    const slider = sliderRef.current || mobileSliderRef.current;
+    if (slider) {
+      setContainerWidth(slider.offsetWidth);
     }
 
     const handleResize = () => {
-      if (sliderRef.current) {
-        setContainerWidth(sliderRef.current.offsetWidth);
+      const slider = sliderRef.current || mobileSliderRef.current;
+      if (slider) {
+        setContainerWidth(slider.offsetWidth);
       }
     };
 
@@ -67,16 +70,43 @@ const HeroSection = () => {
     }
   };
 
+  const handleTouchStart = () => {
+    if (!isFullyUnlocked) {
+      setIsDragging(true);
+    }
+  };
+
   useEffect(() => {
     if (!isDragging) return;
 
     const handleMouseMove = (e: MouseEvent) => {
-      if (!sliderRef.current) return;
+      const slider = sliderRef.current || mobileSliderRef.current;
+      if (!slider) return;
 
-      const rect = sliderRef.current.getBoundingClientRect();
+      const rect = slider.getBoundingClientRect();
       const progress = Math.max(
         0,
         Math.min(100, ((e.clientX - rect.left) / rect.width) * 100)
+      );
+      setDragProgress(progress);
+
+      // Desbloquear cuando alcanza el 100% del recorrido
+      if (progress >= 100) {
+        handleSliderMove(100);
+        setIsFullyUnlocked(true);
+        setIsDragging(false);
+      }
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      const slider = sliderRef.current || mobileSliderRef.current;
+      if (!slider) return;
+
+      const touch = e.touches[0];
+      const rect = slider.getBoundingClientRect();
+      const progress = Math.max(
+        0,
+        Math.min(100, ((touch.clientX - rect.left) / rect.width) * 100)
       );
       setDragProgress(progress);
 
@@ -95,12 +125,23 @@ const HeroSection = () => {
       setIsDragging(false);
     };
 
+    const handleTouchEnd = () => {
+      if (dragProgress < 100) {
+        setDragProgress(0);
+      }
+      setIsDragging(false);
+    };
+
     document.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseup", handleMouseUp);
+    document.addEventListener("touchmove", handleTouchMove);
+    document.addEventListener("touchend", handleTouchEnd);
 
     return () => {
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseup", handleMouseUp);
+      document.removeEventListener("touchmove", handleTouchMove);
+      document.removeEventListener("touchend", handleTouchEnd);
     };
   }, [isDragging, dragProgress, handleSliderMove]);
 
@@ -217,20 +258,54 @@ DEF HACK_DATABASE():
               </h2>
             </div>
 
-            {/* CTA Button */}
+            {/* CTA Button - Slider */}
             <div className="mt-3 w-full">
-              <a href="#contact" className="block">
-                <div className="relative w-full h-14 rounded-full overflow-hidden border-3 border-red-600 bg-red-600/10 backdrop-blur flex items-center gap-0">
-                  <div className="bg-red-600 h-full w-16 flex items-center justify-center flex-shrink-0">
-                    <span className="text-white text-2xl font-bold">›</span>
-                  </div>
-                  <div className="flex-1 text-center pr-4">
-                    <span className="font-mono text-white text-[10px] font-bold tracking-widest">
-                      ACCEDER...
-                    </span>
-                  </div>
+              <div
+                ref={mobileSliderRef}
+                onMouseDown={handleMouseDown}
+                onTouchStart={handleTouchStart}
+                className="relative w-full h-14 overflow-hidden border-2 border-accent/60 flex items-stretch cursor-grab active:cursor-grabbing transition-all duration-300"
+                style={{
+                  borderColor:
+                    dragProgress > 0
+                      ? "rgb(239, 68, 68)"
+                      : "rgba(239, 68, 68, 0.6)",
+                }}
+              >
+                {/* Progress background */}
+                <div
+                  className="absolute left-0 top-0 h-full bg-accent/20 z-0"
+                  style={{
+                    width: `${dragProgress}%`,
+                    transition: isDragging ? "none" : "all 75ms",
+                  }}
+                />
+
+                {/* Slider thumb - Left arrow section that moves */}
+                <div
+                  className="absolute h-full bg-accent flex items-center justify-center z-10"
+                  style={{
+                    width: "56px",
+                    left: "0",
+                    transform: `translateX(${
+                      (dragProgress / 100) *
+                      ((mobileSliderRef.current?.offsetWidth || 0) - 56)
+                    }px)`,
+                    transition: isDragging ? "none" : "all 75ms",
+                  }}
+                >
+                  <span className="text-white text-xl font-bold leading-none select-none pointer-events-none">
+                    ›
+                  </span>
                 </div>
-              </a>
+
+                {/* Text section */}
+                <div className="flex-1 flex items-center justify-center z-0 pointer-events-none">
+                  <span className="font-mono text-white/60 uppercase tracking-widest text-[9px] select-none">
+                    {isFullyUnlocked ? "¡DESBLOQUEADO!" : "ACCEDER..."}
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -339,6 +414,7 @@ DEF HACK_DATABASE():
             <div
               ref={sliderRef}
               onMouseDown={handleMouseDown}
+              onTouchStart={handleTouchStart}
               className="relative w-full h-16 overflow-hidden border-2 border-accent/60 flex items-stretch cursor-grab active:cursor-grabbing transition-all duration-300"
               style={{
                 borderColor:
@@ -349,22 +425,27 @@ DEF HACK_DATABASE():
             >
               {/* Progress background */}
               <div
-                className="absolute left-0 top-0 h-full bg-accent/20 transition-all duration-75 z-0"
-                style={{ width: `${dragProgress}%` }}
+                className="absolute left-0 top-0 h-full bg-accent/20 z-0"
+                style={{
+                  width: `${dragProgress}%`,
+                  transition: isDragging ? "none" : "all 75ms",
+                }}
               />
 
               {/* Slider thumb - Left arrow section that moves */}
               <div
-                className="absolute h-full bg-accent flex items-center justify-center z-10 transition-all duration-75"
+                className="absolute h-full bg-accent flex items-center justify-center z-10"
                 style={{
                   width: "80px",
                   left: "0",
                   transform: `translateX(${
-                    (dragProgress / 100) * (containerWidth - 80)
+                    (dragProgress / 100) *
+                    ((sliderRef.current?.offsetWidth || 0) - 80)
                   }px)`,
+                  transition: isDragging ? "none" : "all 75ms",
                 }}
               >
-                <span className="text-white text-4xl font-bold leading-none select-none">
+                <span className="text-white text-4xl font-bold leading-none select-none pointer-events-none">
                   ›››
                 </span>
               </div>
