@@ -10,6 +10,39 @@ const HeroSection = () => {
   const sliderRef = useRef<HTMLDivElement>(null);
   const mobileSliderRef = useRef<HTMLDivElement>(null);
 
+  // Estilos para la animación de parpadeo
+  useEffect(() => {
+    const style = document.createElement("style");
+    style.textContent = `
+      @keyframes blink-slider {
+        0% {
+          opacity: 1;
+        }
+        25% {
+          opacity: 0.8;
+        }
+        50% {
+          opacity: 0.2;
+        }
+        75% {
+          opacity: 0.8;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      
+      .slider-blinking {
+        animation: blink-slider 4s infinite ease-in-out;
+      }
+    `;
+    document.head.appendChild(style);
+
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
+
   // Capturar ancho del contenedor
   useEffect(() => {
     const slider = sliderRef.current || mobileSliderRef.current;
@@ -264,7 +297,9 @@ DEF HACK_DATABASE():
                 ref={mobileSliderRef}
                 onMouseDown={handleMouseDown}
                 onTouchStart={handleTouchStart}
-                className="relative w-full h-14 overflow-hidden border-2 border-accent/60 flex items-stretch cursor-grab active:cursor-grabbing transition-all duration-300"
+                className={`relative w-full h-14 overflow-hidden border-2 border-accent/60 flex items-stretch cursor-grab active:cursor-grabbing transition-all duration-300 ${
+                  !isFullyUnlocked ? "slider-blinking" : ""
+                }`}
                 style={{
                   borderColor:
                     dragProgress > 0
@@ -415,7 +450,9 @@ DEF HACK_DATABASE():
               ref={sliderRef}
               onMouseDown={handleMouseDown}
               onTouchStart={handleTouchStart}
-              className="relative w-full h-16 overflow-hidden border-2 border-accent/60 flex items-stretch cursor-grab active:cursor-grabbing transition-all duration-300"
+              className={`relative w-full h-16 overflow-hidden border-2 border-accent/60 flex items-stretch cursor-grab active:cursor-grabbing transition-all duration-300 ${
+                !isFullyUnlocked ? "slider-blinking" : ""
+              }`}
               style={{
                 borderColor:
                   dragProgress > 0
