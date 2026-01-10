@@ -19,11 +19,11 @@ const AboutSection = () => {
             <div className="absolute bottom-0 right-0 w-8 h-8 md:w-12 md:h-12 border-b-[3px] border-r-[3px] border-black" />
 
             <div className="text-center px-4 md:px-8">
-              <h2 className="text-6xl md:text-8xl lg:text-9xl text-black leading-none mb-1 tracking-tighter" style={{ fontFamily: 'Impact, sans-serif' }}>
+              <h2 className="font-japanese text-6xl md:text-8xl lg:text-9xl text-black leading-none mb-1 tracking-tighter">
                 ネオン京
               </h2>
               <p className="text-3xl md:text-5xl text-black tracking-tighter" style={{ fontFamily: 'Impact, sans-serif' }}>
-                neonkyo <span className="font-bold">スタジオ</span>
+                neonkyo <span className="font-japanese">スタジオ</span>
               </p>
             </div>
           </div>
