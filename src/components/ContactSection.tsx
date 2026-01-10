@@ -2,10 +2,11 @@ const ContactSection = () => {
   return (
     <section
       id="contact"
-      className="relative py-24 md:py-32 px-4 bg-accent overflow-hidden"
+      className="relative py-24 md:py-32 px-4 overflow-hidden"
       style={{
         clipPath: "polygon(0 40px, 40px 40px, 45px 30px, 120px 30px, 125px 40px, 300px 40px, 305px 30px, 345px 30px, 350px 40px, 100% 40px, 100% 100%, 85% 100%, 80% calc(100% - 60px), 20% calc(100% - 60px), 15% 100%, 0 100%)",
-        marginTop: "-40px"
+        marginTop: "-40px",
+        backgroundColor: "#FF0000"
       }}
     >
       {/* Grid Pattern Layer - More visible dots */}

@@ -21,79 +21,92 @@ const services = [
 
 const ServicesSection = () => {
   return (
-    <section id="services" className="relative py-24 md:py-32 px-4 bg-black">
-      <div className="container mx-auto max-w-6xl">
+    <section id="services" className="relative py-24 md:py-32 px-4 bg-black overflow-hidden">
+      {/* Grid Pattern Background */}
+      <div className="absolute inset-0 bg-grid-cyber opacity-40 pointer-events-none" />
+
+      <div className="container mx-auto max-w-7xl relative z-10">
         {/* Section header */}
-        <div className="text-center mb-16">
-          <h2 className="font-display text-4xl md:text-6xl text-white mb-4">
+        <div className="text-left mb-24 pl-4 md:pl-0">
+          <h2 className="font-display text-5xl md:text-7xl text-white mb-4 italic leading-none transform -skew-x-6">
             || SOMOS LO QUE NECESITAS
           </h2>
         </div>
 
         {/* Services grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8">
           {services.map((service, index) => (
             <div
               key={service.title}
-              className="group relative p-8 bg-black border-2 border-primary hover:border-primary/80 transition-all duration-300"
+              className="group relative px-4 md:px-0 flex flex-col h-full"
             >
-              {/* Decorative brackets */}
-              <div className="flex items-center justify-center mb-6">
-                <span className="text-primary text-2xl">┌</span>
-                <div className="mx-4">
-                  {/* Icon using SVG from assets */}
+              {/* Icon Container with Brackets */}
+              <div className="relative w-32 h-32 mb-10 mx-auto md:mx-0 flex-shrink-0">
+                {/* Brackets */}
+                <div className="absolute top-0 left-0 w-8 h-8 border-t-[3px] border-l-[3px] border-primary" />
+                <div className="absolute top-0 right-0 w-8 h-8 border-t-[3px] border-r-[3px] border-primary" />
+                <div className="absolute bottom-0 left-0 w-8 h-8 border-b-[3px] border-l-[3px] border-primary" />
+                <div className="absolute bottom-0 right-0 w-8 h-8 border-b-[3px] border-r-[3px] border-primary" />
+
+                {/* Small Label - Two lines */}
+                <div className="absolute -top-1 -right-6 transform translate-x-full">
+                  <div className="flex flex-col items-start">
+                    <span className="font-mono text-[10px] text-white uppercase tracking-wider leading-none mb-1">
+                      {service.label}
+                    </span>
+                    <span className="font-mono text-[10px] text-white uppercase tracking-wider leading-none">
+                      &lt;&lt;
+                    </span>
+                  </div>
+                </div>
+
+                {/* Icon */}
+                <div className="absolute inset-0 flex items-center justify-center p-6">
                   {index === 0 && (
                     <img
                       src="/assets/icons/Grupo 263.svg"
                       alt="Specialists"
-                      className="w-16 h-16 mx-auto"
+                      className="w-full h-full object-contain"
+                      style={{ filter: 'brightness(0) saturate(100%) invert(84%) sepia(35%) saturate(836%) hue-rotate(1deg) brightness(108%) contrast(105%)' }}
                     />
                   )}
                   {index === 1 && (
                     <img
                       src="/assets/icons/Grupo 264.svg"
                       alt="100% Digital"
-                      className="w-16 h-16 mx-auto"
+                      className="w-full h-full object-contain"
+                      style={{ filter: 'brightness(0) saturate(100%) invert(84%) sepia(35%) saturate(836%) hue-rotate(1deg) brightness(108%) contrast(105%)' }}
                     />
                   )}
                   {index === 2 && (
                     <img
                       src="/assets/icons/Grupo 265.svg"
                       alt="AI Powered"
-                      className="w-16 h-16 mx-auto"
+                      className="w-full h-full object-contain"
+                      style={{ filter: 'brightness(0) saturate(100%) invert(84%) sepia(35%) saturate(836%) hue-rotate(1deg) brightness(108%) contrast(105%)' }}
                     />
                   )}
                 </div>
-                <span className="text-primary text-2xl">┐</span>
               </div>
 
-              {/* Title */}
-              <h3 className="font-mono text-xl text-primary mb-4 text-center uppercase">
+              {/* Title - Counter-skewed to make it straight */}
+              <h3 className="font-display text-2xl md:text-3xl text-primary mb-6 uppercase font-bold tracking-wide text-center md:text-left flex-shrink-0 transform -skew-x-12 md:-skew-x-12">
                 {service.title}
               </h3>
 
               {/* Description */}
-              <p className="font-mono text-sm text-white/80 leading-relaxed mb-6 text-center">
+              <p className="font-mono text-sm text-white/90 leading-relaxed mb-8 max-w-sm mx-auto md:mx-0 text-center md:text-left flex-grow">
                 {service.description}
               </p>
 
-              {/* CTA Button */}
-              <div className="text-center">
+              {/* CTA Button - Pushed to bottom */}
+              <div className="text-center md:text-left mt-auto">
                 <a
                   href="#contact"
-                  className="inline-block px-6 py-2 bg-accent text-white font-mono text-sm uppercase hover:bg-accent/90 transition-all duration-300"
+                  className="inline-block w-full md:w-auto min-w-[200px] px-8 py-3 bg-[#FF0000] text-white font-mono text-sm font-bold uppercase tracking-wider hover:bg-red-600 transition-all duration-300 transform -skew-x-12 text-center"
                 >
-                  SABER MÁS
+                  <span className="inline-block transform skew-x-12">SABER MÁS</span>
                 </a>
-              </div>
-
-              {/* Bottom brackets */}
-              <div className="flex items-center justify-center mt-6">
-                <span className="text-primary text-2xl">└</span>
-                <span className="font-mono text-xs text-primary/60 mx-4 uppercase">
-                  &lt;&lt; {service.label} &gt;&gt;
-                </span>
-                <span className="text-primary text-2xl">┘</span>
               </div>
             </div>
           ))}
