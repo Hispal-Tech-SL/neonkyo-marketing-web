@@ -1,5 +1,4 @@
 import HackerBackground from "@/components/HackerBackground";
-import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import ServicesSection from "@/components/ServicesSection";
@@ -16,7 +15,6 @@ const Index = () => {
 
       {/* Main content */}
       <div className="relative z-10">
-        <Header />
         <main>
           <HeroSection />
           <AboutSection />
