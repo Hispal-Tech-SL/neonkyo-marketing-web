@@ -43,9 +43,9 @@ DEF HACK_DATABASE():
         {/* Content overlay */}
         <div className="relative z-10 w-full h-full flex flex-col justify-between px-4 pt-3 pb-4">
           {/* Top section */}
-          <div className="flex flex-col items-start space-y-2">
-            {/* Top info text - left aligned */}
-            <div className="text-left">
+          <div className="flex justify-end">
+            {/* Top info text - right aligned */}
+            <div className="text-right">
               <p className="font-mono text-[6px] text-white/50 leading-tight tracking-widest">
                 &gt;&gt;
                 <br />
@@ -61,13 +61,16 @@ DEF HACK_DATABASE():
           </div>
 
           {/* Center area - Logo positioned */}
-          <div className="absolute top-1/4 right-4 z-40 pointer-events-none">
+          <div className="absolute top-12 right-2 z-40 pointer-events-none">
             <div className="relative">
               <div className="px-2 py-1">
-                <h1 className="font-display text-[72px] text-primary neon-text leading-none tracking-tight font-bold">
+                <h1
+                  className="text-[85px] text-primary leading-none tracking-tight italic"
+                  style={{ fontFamily: "Seriguela", fontWeight: "400" }}
+                >
                   neonkyo
                 </h1>
-                <p className="font-japanese text-[28px] text-primary/90 leading-none">
+                <p className="font-japanese text-[28px] text-primary leading-none">
                   ネオン京
                 </p>
               </div>
