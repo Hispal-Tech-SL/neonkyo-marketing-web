@@ -1,4 +1,109 @@
+import { useState, useRef, useEffect } from "react";
+import { useSlideUnlock } from "@/hooks/useSlideUnlock";
+
 const HeroSection = () => {
+  const { isUnlocked, handleSliderMove } = useSlideUnlock();
+  const [dragProgress, setDragProgress] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [containerWidth, setContainerWidth] = useState(0);
+  const [isFullyUnlocked, setIsFullyUnlocked] = useState(false);
+  const sliderRef = useRef<HTMLDivElement>(null);
+
+  // Capturar ancho del contenedor
+  useEffect(() => {
+    if (sliderRef.current) {
+      setContainerWidth(sliderRef.current.offsetWidth);
+    }
+
+    const handleResize = () => {
+      if (sliderRef.current) {
+        setContainerWidth(sliderRef.current.offsetWidth);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Cuando se desbloquea completamente, hacer scroll después de 0.75 segundos
+  useEffect(() => {
+    if (isUnlocked && isFullyUnlocked) {
+      const timer = setTimeout(() => {
+        const nextSection = document.querySelector("#about");
+        if (nextSection) {
+          const targetPosition =
+            nextSection.getBoundingClientRect().top + window.scrollY;
+          const startPosition = window.scrollY;
+          const distance = targetPosition - startPosition;
+          const duration = 2000; // 2 segundos para scroll más rápido
+          let startTime: number | null = null;
+
+          const ease = (t: number) =>
+            t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+
+          const scroll = (currentTime: number) => {
+            if (startTime === null) startTime = currentTime;
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const ease_progress = ease(progress);
+            window.scrollTo(0, startPosition + distance * ease_progress);
+
+            if (progress < 1) {
+              requestAnimationFrame(scroll);
+            }
+          };
+
+          requestAnimationFrame(scroll);
+        }
+      }, 750);
+
+      return () => clearTimeout(timer);
+    }
+  }, [isUnlocked, isFullyUnlocked]);
+
+  const handleMouseDown = () => {
+    if (!isFullyUnlocked) {
+      setIsDragging(true);
+    }
+  };
+
+  useEffect(() => {
+    if (!isDragging) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!sliderRef.current) return;
+
+      const rect = sliderRef.current.getBoundingClientRect();
+      const progress = Math.max(
+        0,
+        Math.min(100, ((e.clientX - rect.left) / rect.width) * 100)
+      );
+      setDragProgress(progress);
+
+      // Desbloquear cuando alcanza el 100% del recorrido
+      if (progress >= 100) {
+        handleSliderMove(100);
+        setIsFullyUnlocked(true);
+        setIsDragging(false);
+      }
+    };
+
+    const handleMouseUp = () => {
+      if (dragProgress < 100) {
+        setDragProgress(0);
+      }
+      setIsDragging(false);
+    };
+
+    document.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseup", handleMouseUp);
+
+    return () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseup", handleMouseUp);
+    };
+  }, [isDragging, dragProgress, handleSliderMove]);
+
   return (
     <section
       id="home"
@@ -65,8 +170,13 @@ DEF HACK_DATABASE():
             <div className="relative">
               <div className="px-2 py-1">
                 <h1
-                  className="text-[85px] text-primary leading-none tracking-tight italic"
-                  style={{ fontFamily: "Seriguela", fontWeight: "400" }}
+                  className="text-[85px] text-primary leading-none tracking-tight italic drop-shadow-lg"
+                  style={{
+                    fontFamily: "Seriguela",
+                    fontWeight: "400",
+                    textShadow: "0 0 2px rgba(59, 255, 0, 0.5)",
+                    WebkitTextStroke: "0.5px currentColor",
+                  }}
                 >
                   neonkyo
                 </h1>
@@ -128,23 +238,22 @@ DEF HACK_DATABASE():
 
       {/* DESKTOP VERSION */}
       <div className="hidden md:flex relative z-10 w-full h-full">
-        {/* Left side - Hero image (50%) */}
-        <div className="w-1/2 h-full relative flex items-center justify-center overflow-hidden">
+        {/* Left side - Hero image (60%) - larger and shifted right */}
+        <div className="w-3/5 h-full relative flex items-center justify-end overflow-hidden">
           <img
             src="/assets/images/hero-image.png"
             alt="Neonkyo Studio - Cyborg"
-            className="hidden md:block h-full w-auto object-contain ring-4 ring-blue-500/30"
+            className="hidden md:block h-full w-auto object-contain scale-125 -mr-12"
           />
-          <div className="hidden md:block absolute top-6 left-6 z-50 text-sm text-blue-400 font-bold pointer-events-none">
-            DESKTOP IMAGE
-          </div>
         </div>
 
-        {/* Right side - Content (50%) */}
-        <div className="w-1/2 h-full flex flex-col justify-center items-end pr-12 space-y-10">
+        {/* Right side - Content (40%) */}
+        <div className="w-2/5 h-full flex flex-col justify-start items-end pt-8 pr-16 space-y-4">
           {/* Top info text */}
           <div className="text-right">
-            <p className="font-mono text-[10px] text-white/40 leading-relaxed tracking-wide">
+            <p className="font-mono text-[9px] text-white/40 leading-tight tracking-widest">
+              &gt;&gt;
+              <br />
               REV 06.24
               <br />
               ADVERTISING SERVICES NEONKYO STUDIO
@@ -156,68 +265,117 @@ DEF HACK_DATABASE():
           </div>
 
           {/* Logo with brackets */}
-          <div className="relative">
+          <div className="relative mt-12">
             {/* Corner brackets */}
-            <span className="absolute -top-5 -left-5 text-primary text-4xl leading-none">
+            <span className="absolute -top-6 -left-6 text-primary text-5xl leading-none">
               ┌
             </span>
-            <span className="absolute -top-5 -right-5 text-primary text-4xl leading-none">
+            <span className="absolute -top-6 -right-6 text-primary text-5xl leading-none">
               ┐
             </span>
-            <span className="absolute -bottom-5 -left-5 text-primary text-4xl leading-none">
+            <span className="absolute -bottom-6 -left-6 text-primary text-5xl leading-none">
               └
             </span>
-            <span className="absolute -bottom-5 -right-5 text-primary text-4xl leading-none">
+            <span className="absolute -bottom-6 -right-6 text-primary text-5xl leading-none">
               ┘
             </span>
 
-            <div className="px-16 py-8">
-              <h1 className="font-display text-[140px] text-primary neon-text leading-none tracking-tight">
+            <div className="px-8 py-6">
+              <h1
+                className="text-[160px] text-primary leading-none tracking-tight italic drop-shadow-lg"
+                style={{
+                  fontFamily: "Seriguela",
+                  fontWeight: "400",
+                  textShadow: "0 0 2px rgba(59, 255, 0, 0.5)",
+                  WebkitTextStroke: "0.5px currentColor",
+                }}
+              >
                 neonkyo
               </h1>
-              <p className="font-japanese text-6xl text-primary/90 text-right mt-2">
-                スタジオ
-              </p>
+              <div className="flex items-center justify-end gap-1 mt-1 whitespace-nowrap">
+                <p className="font-japanese text-3xl text-primary leading-none">
+                  ネオン京
+                </p>
+                <p
+                  className="font-display text-3xl text-primary italic leading-none"
+                  style={{ fontFamily: "Seriguela", fontWeight: "400" }}
+                >
+                  studio
+                </p>
+              </div>
             </div>
           </div>
 
           {/* Description text */}
-          <div className="text-right max-w-md">
-            <p className="font-mono text-[10px] text-white/30 leading-relaxed tracking-wide">
+          <div className="text-right mt-8">
+            <p className="font-mono text-[9px] text-white/30 leading-tight tracking-widest">
               NEONKYO STUDIO ES EL FUTURO DE LA PUBLICIDAD
               <br />
-              DIGITAL PARA ACCEDER...
+              DESLIZA PARA ACCEDER...
+            </p>
+          </div>
+
+          {/* Decorative text */}
+          <div className="text-right">
+            <p className="font-mono text-[9px] text-white/20 leading-tight">
+              &lt;&lt;
             </p>
           </div>
 
           {/* Hero title */}
-          <div className="text-right space-y-4">
-            <h2 className="font-japanese text-7xl text-white leading-none">
+          <div className="text-right space-y-3 mt-8">
+            <h2 className="font-japanese text-6xl text-white leading-none font-bold">
               広告の未来
             </h2>
-            <h2 className="font-display text-[90px] text-white italic leading-none font-bold tracking-tight">
-              || THE FUTURE OF ADVERTISING
+            <h2 className="font-display text-7xl text-white italic leading-[0.9] font-bold tracking-tight">
+              || THE FUTURE
+              <br />
+              OF ADVERTISING
             </h2>
           </div>
 
-          {/* CTA Button */}
-          <div className="w-full">
-            <a href="#contact" className="relative group block">
-              <div className="flex items-stretch border-2 border-accent/60 hover:border-accent transition-all duration-300">
-                {/* Arrow section */}
-                <div className="bg-accent flex items-center justify-center px-10 py-8">
-                  <span className="text-white text-5xl font-bold leading-none">
-                    &gt;&gt;&gt;
-                  </span>
-                </div>
-                {/* Text section */}
-                <div className="flex-1 flex items-center px-14 py-8 bg-transparent">
-                  <span className="font-mono text-white/60 uppercase tracking-[0.3em] text-lg group-hover:text-white transition-colors">
-                    ACCEDER...
-                  </span>
-                </div>
+          {/* CTA Button - Slider */}
+          <div className="w-full mt-8">
+            <div
+              ref={sliderRef}
+              onMouseDown={handleMouseDown}
+              className="relative w-full h-16 overflow-hidden border-2 border-accent/60 flex items-stretch cursor-grab active:cursor-grabbing transition-all duration-300"
+              style={{
+                borderColor:
+                  dragProgress > 0
+                    ? "rgb(239, 68, 68)"
+                    : "rgba(239, 68, 68, 0.6)",
+              }}
+            >
+              {/* Progress background */}
+              <div
+                className="absolute left-0 top-0 h-full bg-accent/20 transition-all duration-75 z-0"
+                style={{ width: `${dragProgress}%` }}
+              />
+
+              {/* Slider thumb - Left arrow section that moves */}
+              <div
+                className="absolute h-full bg-accent flex items-center justify-center z-10 transition-all duration-75"
+                style={{
+                  width: "80px",
+                  left: "0",
+                  transform: `translateX(${
+                    (dragProgress / 100) * (containerWidth - 80)
+                  }px)`,
+                }}
+              >
+                <span className="text-white text-4xl font-bold leading-none select-none">
+                  ›››
+                </span>
               </div>
-            </a>
+
+              {/* Text section */}
+              <div className="flex-1 flex items-center justify-center z-0 pointer-events-none">
+                <span className="font-mono text-white/60 uppercase tracking-[0.3em] text-lg select-none">
+                  {isFullyUnlocked ? "¡DESBLOQUEADO!" : "ACCEDER..."}
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
