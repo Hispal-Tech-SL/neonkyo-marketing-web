@@ -1,15 +1,18 @@
 import { useState } from "react";
+import { useI18n } from "@/i18n/i18n";
 import { Menu, X } from "lucide-react";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const { t } = useI18n();
+
   const navItems = [
-    { name: "Inicio", href: "#home" },
-    { name: "Sobre", href: "#about" },
-    { name: "Servicios", href: "#services" },
-    { name: "Preguntas Frecuentes", href: "#faqs" },
-    { name: "Contacto", href: "#contact" },
+    { name: t("header.nav.home"), href: "#home" },
+    { name: t("header.nav.about"), href: "#about" },
+    { name: t("header.nav.services"), href: "#services" },
+    { name: t("header.nav.faqs"), href: "#faqs" },
+    { name: t("header.nav.contact"), href: "#contact" },
   ];
 
   return (
@@ -47,7 +50,7 @@ const Header = () => {
           <button
             className="md:hidden text-primary p-2"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Alternar menú"
+            aria-label={t("header.nav.menu_aria") || "Alternar menú"}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>

@@ -1,50 +1,8 @@
-const services = [
-  {
-    icon: "ESPECIALISTAS",
-    title: "ESPECIALISTAS",
-    description: (
-      <>
-        Nuestra agencia está
-        <br />
-        especializada en branding y<br />
-        desarrollo de marcas,
-        <br />
-        ofreciendo asesoramiento de
-        <br />
-        alto nivel para todo tipo de
-        <br />
-        proyectos.
-      </>
-    ),
-    label: "ESPECIALISTAS",
-  },
-  {
-    icon: "100% DIGITAL",
-    title: "100% DIGITAL",
-    description: (
-      <>
-        Apostamos por un modelo de negocio íntegramente digital. Si bien
-        contamos con sede física, optamos por un modelo de teletrabajo y citas
-        telemáticas.
-      </>
-    ),
-    label: "DIGITAL",
-  },
-  {
-    icon: "IMPULSADO POR IA",
-    title: "IMPULSADO POR IA",
-    description: (
-      <>
-        Entrenamos nuestros propios modelos de Inteligencia Artificial de última
-        generación y los utilizamos para desarrollar estrategias avanzadas de
-        comunicación.
-      </>
-    ),
-    label: "IMPULSADO POR IA",
-  },
-];
+import { useI18n } from "@/i18n/i18n";
 
 const ServicesSection = () => {
+  const { t } = useI18n();
+  const services = t("services.items");
   return (
     <section
       id="services"
@@ -57,7 +15,7 @@ const ServicesSection = () => {
         {/* Section header */}
         <div className="text-left mb-24 pl-4 md:pl-0">
           <h2 className="font-display text-5xl md:text-7xl text-white mb-4 italic leading-none transform -skew-x-6">
-            || SOMOS LO QUE NECESITAS
+            {t("services.title")}
           </h2>
         </div>
 
@@ -132,7 +90,7 @@ const ServicesSection = () => {
               </h3>
 
               {/* Description */}
-              <p className="font-mono text-sm text-white/90 leading-relaxed mb-8 max-w-sm mx-auto md:mx-0 text-center md:text-left flex-grow">
+              <p className="font-mono text-sm text-white/90 leading-relaxed mb-8 max-w-sm mx-auto md:mx-0 text-center md:text-left flex-grow whitespace-pre-line">
                 {service.description}
               </p>
 
@@ -143,7 +101,7 @@ const ServicesSection = () => {
                   className="inline-block w-full md:w-auto min-w-[200px] px-8 py-3 bg-[#FF0000] text-white font-mono text-sm font-bold uppercase tracking-wider hover:bg-red-600 transition-all duration-300 transform -skew-x-12 text-center"
                 >
                   <span className="inline-block transform skew-x-12">
-                    SABER MÁS
+                    {t("services.more")}
                   </span>
                 </a>
               </div>

@@ -1,4 +1,7 @@
+import { useI18n } from "@/i18n/i18n";
+
 const AboutSection = () => {
+  const { t } = useI18n();
   return (
     <section
       id="about"
@@ -34,28 +37,23 @@ const AboutSection = () => {
 
         {/* Description text */}
         <div className="text-center max-w-3xl mx-auto mb-16 px-4">
-          <p className="font-mono text-sm md:text-base lg:text-lg text-black leading-relaxed font-bold tracking-tight">
-            Neonkyo Studio es el futuro del marketing y la publicidad.
-            Especialistas en el desarrollo de nuevos proyectos y marcas desde
-            cero. Gracias a nuestra IA, ofrecemos soluciones y estrategias de
-            comunicación extremadamente precisas y eficaces, adaptadas a las
-            necesidades de cada proyecto. Somos la primera agencia de
-            comunicación 100% Digital del mundo. Una Agencia de Publicidad
-            originaria de Japón, con sede en España, y trabajando en todo el
-            mundo.
+          <p className="font-mono text-sm md:text-base lg:text-lg text-black leading-relaxed font-bold tracking-tight whitespace-pre-line">
+            {t("about.description")}
           </p>
         </div>
 
         {/* CTA */}
         <div className="text-center">
           <p className="font-display text-2xl md:text-4xl text-black font-black mb-8 uppercase tracking-wide transform -skew-x-12">
-            ¿TIENES UN PROYECTO?
+            {t("about.cta_title")}
           </p>
           <a
             href="#contact"
             className="inline-block px-12 md:px-16 py-3 md:py-4 bg-[#FF0000] text-white font-mono text-lg font-bold uppercase tracking-wider hover:bg-red-600 transition-all duration-300 transform -skew-x-12 hover:-translate-y-1 shadow-lg hover:shadow-xl"
           >
-            <span className="inline-block transform skew-x-12">HABLEMOS</span>
+            <span className="inline-block transform skew-x-12">
+              {t("about.cta_button")}
+            </span>
           </a>
         </div>
       </div>

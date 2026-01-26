@@ -1,4 +1,7 @@
+import { useI18n } from "@/i18n/i18n";
+
 const ContactSection = () => {
+  const { t } = useI18n();
   return (
     <section
       id="contact"
@@ -24,11 +27,10 @@ const ContactSection = () => {
           </h2>
 
           <p className="font-mono text-lg md:text-xl text-white mb-2 font-bold tracking-[0.15em]">
-            ACTUALMENTE TRABAJAMOS EN TODO EL MUNDO
+            {t("contact.working")}
           </p>
           <p className="font-mono text-[9px] md:text-[10px] text-white/70 tracking-[0.25em] uppercase">
-            &gt;&gt; PUEDES CONTACTARNOS EN CUALQUIER MOMENTO, A CUALQUIER HORA
-            &lt;&lt;
+            {t("contact.contact_any_time")}
           </p>
         </div>
 
@@ -48,10 +50,10 @@ const ContactSection = () => {
                 className="font-display text-4xl md:text-6xl lg:text-7xl text-white hover:opacity-80 transition-opacity tracking-wide block italic transform -skew-x-6 scale-x-95"
                 style={{ fontWeight: 100 }}
               >
-                NEONKYOSTUDIO@GMAIL.COM
+                {t("contact.email")}
               </a>
               <p className="font-mono text-[10px] md:text-[11px] text-white mt-8 md:mt-12 tracking-[0.35em] uppercase">
-                TIEMPO ESTIMADO DE RESPUESTA: 24 HORAS
+                {t("contact.response_time")}
               </p>
             </div>
           </div>
@@ -90,7 +92,7 @@ const ContactSection = () => {
                 </svg>
               </div>
               <span className="font-mono text-sm font-bold tracking-[0.25em] uppercase text-primary whitespace-nowrap">
-                ¿ERES DE ESPAÑA?
+                {t("contact.whats_label")}
               </span>
             </a>
           </div>

@@ -1,5 +1,43 @@
 import { useState, useRef, useEffect } from "react";
 import { useSlideUnlock } from "@/hooks/useSlideUnlock";
+import { useI18n } from "@/i18n/i18n";
+
+const LanguageSelector: React.FC = () => {
+  const { lang, setLang } = useI18n();
+  return (
+    <div className="flex items-center gap-2 bg-black/60 px-2 py-1 rounded border border-primary/40 shadow-[0_6px_18px_rgba(59,255,0,0.07)]">
+      <button
+        onClick={() => setLang("es")}
+        className={`px-2 py-1 text-sm ${lang === "es" ? "bg-primary text-black font-bold" : "text-white/80"}`}
+      >
+        ES
+      </button>
+      <button
+        onClick={() => setLang("en")}
+        className={`px-2 py-1 text-sm ${lang === "en" ? "bg-primary text-black font-bold" : "text-white/80"}`}
+      >
+        EN
+      </button>
+    </div>
+  );
+};
+
+const TopInfoMobile: React.FC = () => {
+  const { t } = useI18n();
+  return (
+    <p className="font-mono text-[6px] text-white/50 leading-tight tracking-widest">
+      &gt;&gt;
+      <br />
+      {t("hero.rev")}
+      <br />
+      {t("hero.services_label")}
+      <br />
+      {t("hero.version")}
+      <br />
+      {t("hero.ai")}
+    </p>
+  );
+};
 
 const HeroSection = () => {
   const { isUnlocked, handleSliderMove } = useSlideUnlock();
@@ -9,6 +47,7 @@ const HeroSection = () => {
   const [isFullyUnlocked, setIsFullyUnlocked] = useState(false);
   const sliderRef = useRef<HTMLDivElement>(null);
   const mobileSliderRef = useRef<HTMLDivElement>(null);
+  const { t } = useI18n();
 
   // Estilos para la animación de parpadeo
   useEffect(() => {
@@ -203,9 +242,12 @@ DEF ACCEDER_BASE_DATOS():
         </pre>
       </div>
 
-      {/* Top left corner icon */}
-      <div className="absolute top-2 left-4 md:left-8 text-primary text-5xl md:text-6xl font-bold z-50 leading-none">
+      {/* Top left corner icon + language selector debajo */}
+      <div className="absolute top-6 md:top-8 left-4 md:left-8 text-primary text-5xl md:text-6xl font-bold z-50 leading-none relative">
         京
+        <div className="absolute left-0 top-full mt-4 md:mt-6">
+          <LanguageSelector />
+        </div>
       </div>
 
       {/* MOBILE VERSION */}
@@ -225,17 +267,7 @@ DEF ACCEDER_BASE_DATOS():
           <div className="flex justify-end">
             {/* Top info text - right aligned */}
             <div className="text-right">
-              <p className="font-mono text-[6px] text-white/50 leading-tight tracking-widest">
-                &gt;&gt;
-                <br />
-                REV 06.24
-                <br />
-                SERVICIOS DE PUBLICIDAD NEONKYO STUDIO
-                <br />
-                VERSIÓN EU-ES
-                <br />
-                IMPULSADO POR IA
-              </p>
+              <TopInfoMobile />
             </div>
           </div>
 
@@ -266,9 +298,9 @@ DEF ACCEDER_BASE_DATOS():
             {/* Description text */}
             <div className="text-left">
               <p className="font-mono text-[6px] text-white/40 leading-relaxed tracking-widest">
-                NEONKYO STUDIO ES EL FUTURO DE LA PUBLICIDAD
+                {t("hero.subtitle")}
                 <br />
-                DESLIZA PARA ACCEDER...
+                {t("hero.slide_prompt")}
               </p>
             </div>
 
@@ -284,10 +316,8 @@ DEF ACCEDER_BASE_DATOS():
               <h2 className="font-japanese text-[42px] text-white leading-none font-bold drop-shadow-lg">
                 広告の未来
               </h2>
-              <h2 className="font-display text-[56px] text-white italic leading-[0.9] font-bold tracking-tight drop-shadow-lg mt-1">
-                || EL FUTURO
-                <br />
-                DE LA PUBLICIDAD
+              <h2 className="font-display text-[56px] text-white italic leading-[0.9] font-bold tracking-tight drop-shadow-lg mt-1 whitespace-pre-line">
+                {t("hero.future")}
               </h2>
             </div>
 
@@ -337,7 +367,7 @@ DEF ACCEDER_BASE_DATOS():
                 {/* Text section */}
                 <div className="flex-1 flex items-center justify-center z-0 pointer-events-none">
                   <span className="font-mono text-white/60 uppercase tracking-widest text-[9px] select-none">
-                    {isFullyUnlocked ? "¡DESBLOQUEADO!" : "ACCEDER..."}
+                    {isFullyUnlocked ? t("hero.unlock") : t("hero.access")}
                   </span>
                 </div>
               </div>
@@ -364,13 +394,13 @@ DEF ACCEDER_BASE_DATOS():
             <p className="font-mono text-[9px] text-white/40 leading-tight tracking-widest">
               &gt;&gt;
               <br />
-              REV 06.24
+              {t("hero.rev")}
               <br />
-              SERVICIOS DE PUBLICIDAD NEONKYO STUDIO
+              {t("hero.services_label")}
               <br />
-              VERSIÓN EU-ES
+              {t("hero.version")}
               <br />
-              IMPULSADO POR IA
+              {t("hero.ai")}
             </p>
           </div>
 
@@ -419,9 +449,9 @@ DEF ACCEDER_BASE_DATOS():
           {/* Description text */}
           <div className="text-right mt-8">
             <p className="font-mono text-[9px] text-white/30 leading-tight tracking-widest">
-              NEONKYO STUDIO ES EL FUTURO DE LA PUBLICIDAD
+              {t("hero.subtitle")}
               <br />
-              DESLIZA PARA ACCEDER...
+              {t("hero.slide_prompt")}
             </p>
           </div>
 
@@ -437,10 +467,8 @@ DEF ACCEDER_BASE_DATOS():
             <h2 className="font-japanese text-6xl text-white leading-none font-bold">
               広告の未来
             </h2>
-            <h2 className="font-display text-7xl text-white italic leading-[0.9] font-bold tracking-tight">
-              || EL FUTURO
-              <br />
-              DE LA PUBLICIDAD
+            <h2 className="font-display text-7xl text-white italic leading-[0.9] font-bold tracking-tight whitespace-pre-line">
+              {t("hero.future")}
             </h2>
           </div>
 
@@ -490,7 +518,7 @@ DEF ACCEDER_BASE_DATOS():
               {/* Text section */}
               <div className="flex-1 flex items-center justify-center z-0 pointer-events-none">
                 <span className="font-mono text-white/60 uppercase tracking-[0.3em] text-lg select-none">
-                  {isFullyUnlocked ? "¡DESBLOQUEADO!" : "ACCEDER..."}
+                  {isFullyUnlocked ? t("hero.unlock") : t("hero.access")}
                 </span>
               </div>
             </div>
