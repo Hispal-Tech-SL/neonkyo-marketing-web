@@ -119,7 +119,7 @@ const HeroSection = () => {
       const rect = slider.getBoundingClientRect();
       const progress = Math.max(
         0,
-        Math.min(100, ((e.clientX - rect.left) / rect.width) * 100)
+        Math.min(100, ((e.clientX - rect.left) / rect.width) * 100),
       );
       setDragProgress(progress);
 
@@ -139,7 +139,7 @@ const HeroSection = () => {
       const rect = slider.getBoundingClientRect();
       const progress = Math.max(
         0,
-        Math.min(100, ((touch.clientX - rect.left) / rect.width) * 100)
+        Math.min(100, ((touch.clientX - rect.left) / rect.width) * 100),
       );
       setDragProgress(progress);
 
@@ -187,18 +187,18 @@ const HeroSection = () => {
       {/* Background with code pattern */}
       <div className="absolute inset-0 opacity-5 text-[8px] leading-tight overflow-hidden pointer-events-none">
         <pre className="font-mono text-primary/40 whitespace-pre">
-          {`IMPORT TIME
-# SIMULATED DATABASE
-DATABASE = {
- "CONFIDENTIAL_INFO": "ULTRA SECRET DATA",
- "OTHER_DATA": "LESS RELEVANT INFORMATION"
+          {`IMPORTAR TIEMPO
+# BASE_DE_DATOS_SIMULADA
+BASE_DE_DATOS = {
+ "INFO_CONFIDENCIAL": "DATOS ULTRA SECRETOS",
+ "OTROS_DATOS": "INFORMACIÓN MENOS RELEVANTE"
 }
-DEF HACK_DATABASE():
- PRINT("ACCESSING THE DATABASE...")
+DEF ACCEDER_BASE_DATOS():
+ PRINT("ACCESANDO LA BASE DE DATOS...")
  TIME.SLEEP(2)
- PRINT("ESTABLISHING SECURE CONNECTION...")
+ PRINT("ESTABLECIENDO CONEXIÓN SEGURA...")
  TIME.SLEEP(2)
- PRINT("BYPASSING FIREWALLS...")
+ PRINT("EVADIENDO CORTAFUEGOS...")
  TIME.SLEEP(3)`}
         </pre>
       </div>
@@ -214,7 +214,7 @@ DEF HACK_DATABASE():
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden z-0">
           <img
             src="/assets/images/hero-image.png"
-            alt="Neonkyo Studio - Cyborg"
+            alt="Neonkyo Estudio - Ciborg"
             className="w-full h-full object-cover object-center z-10"
           />
         </div>
@@ -230,11 +230,11 @@ DEF HACK_DATABASE():
                 <br />
                 REV 06.24
                 <br />
-                ADVERTISING SERVICES NEONKYO STUDIO
+                SERVICIOS DE PUBLICIDAD NEONKYO STUDIO
                 <br />
-                EU-ES VERSION
+                VERSIÓN EU-ES
                 <br />
-                AI POWERED
+                IMPULSADO POR IA
               </p>
             </div>
           </div>
@@ -285,9 +285,9 @@ DEF HACK_DATABASE():
                 広告の未来
               </h2>
               <h2 className="font-display text-[56px] text-white italic leading-[0.9] font-bold tracking-tight drop-shadow-lg mt-1">
-                || THE FUTURE
+                || EL FUTURO
                 <br />
-                OF ADVERTISING
+                DE LA PUBLICIDAD
               </h2>
             </div>
 
@@ -352,7 +352,7 @@ DEF HACK_DATABASE():
         <div className="w-3/5 h-full relative flex items-center justify-end overflow-hidden">
           <img
             src="/assets/images/hero-image.png"
-            alt="Neonkyo Studio - Cyborg"
+            alt="Neonkyo Estudio - Ciborg"
             className="hidden md:block h-full w-auto object-contain scale-125 -mr-12"
           />
         </div>
@@ -366,11 +366,11 @@ DEF HACK_DATABASE():
               <br />
               REV 06.24
               <br />
-              ADVERTISING SERVICES NEONKYO STUDIO
+              SERVICIOS DE PUBLICIDAD NEONKYO STUDIO
               <br />
-              EU-ES VERSION
+              VERSIÓN EU-ES
               <br />
-              AI POWERED
+              IMPULSADO POR IA
             </p>
           </div>
 
@@ -410,7 +410,7 @@ DEF HACK_DATABASE():
                   className="font-display text-3xl text-primary italic leading-none"
                   style={{ fontFamily: "Seriguela", fontWeight: "400" }}
                 >
-                  studio
+                  estudio
                 </p>
               </div>
             </div>
@@ -438,9 +438,9 @@ DEF HACK_DATABASE():
               広告の未来
             </h2>
             <h2 className="font-display text-7xl text-white italic leading-[0.9] font-bold tracking-tight">
-              || THE FUTURE
+              || EL FUTURO
               <br />
-              OF ADVERTISING
+              DE LA PUBLICIDAD
             </h2>
           </div>
 

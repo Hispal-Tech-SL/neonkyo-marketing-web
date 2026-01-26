@@ -4,7 +4,7 @@ const faqs = [
   {
     question: "¿Qué es Neonkyo Studio?",
     answer:
-      'Neonkyo Studio es la primera agencia de publicidad 100% digital del mundo, con raíces en la visión japonesa futurista de "Capital de neón" (Neonkyo: NEONネオン + KYO京). Operamos internacionalmente con más de 15 años de experiencia, usando IA entrenada internamente para entregar logos profesionales y estrategias personalizadas que posicionan marcas en cualquier mercado global.',
+      "Neonkyo Studio es la primera agencia de publicidad 100% digital del mundo, con raíces en la visión japonesa futurista de 'Capital de neón' (Neonkyo: NEONネオン + KYO京). Operamos internacionalmente con más de 15 años de experiencia, usando IA entrenada internamente para entregar logos profesionales y estrategias personalizadas que posicionan marcas en cualquier mercado global.",
   },
   {
     question: "¿Qué servicios ofrece Neonkyo Studio?",
@@ -17,7 +17,7 @@ const faqs = [
       "Nos especializamos en desarrollo de marcas y proyectos nuevos, detectando oportunidades con precisión quirúrgica gracias a nuestra IA propia. Fusionamos innovación tecnológica japonesa con métodos tradicionales para logos profesionales y arquitecturas coherentes que escalan mundialmente.",
   },
   {
-    question: '¿Qué hace único nuestro enfoque "AI Powered"?',
+    question: "¿Qué hace único nuestro enfoque 'Impulsado por IA'?",
     answer:
       "Pioneros globales, entrenamos modelos de IA de última generación para estrategias predictivas y logos profesionales que analizan audiencias en tiempo real. Esto genera resultados sobrehumanos con un trato cercano, permitiendo colaboraciones fluidas con clientes de cualquier país.",
   },
@@ -29,7 +29,7 @@ const faqs = [
   {
     question: "¿Cuál es la inspiración japonesa de Neonkyo Studio?",
     answer:
-      'De Japón tomamos la fusión de neón vanguardista y perfección meticulosa, creando logos profesionales impactantes y marcas eternamente relevantes. Representamos "el futuro de la publicidad" (広告の未来), adaptando calidad artesanal a la era digital para audiencias mundiales.',
+      "De Japón tomamos la fusión de neón vanguardista y perfección meticulosa, creando logos profesionales impactantes y marcas eternamente relevantes. Representamos 'el futuro de la publicidad' (広告の未来), adaptando calidad artesanal a la era digital para audiencias mundiales.",
   },
   {
     question: "¿Por qué es clave un logo profesional para tu marca?",
@@ -78,7 +78,7 @@ const FAQSection = () => {
         {/* Section header */}
         <div className="mb-16">
           <h2 className="font-display text-5xl md:text-[5rem] text-white italic transform -skew-x-6 font-light">
-            || FAQ'S
+            || PREGUNTAS FRECUENTES
           </h2>
         </div>
 
@@ -149,7 +149,6 @@ const FAQSection = () => {
                   key={actualIndex}
                   className="border-b border-white/20 pb-6"
                 >
-                  {/* Question button */}
                   <button
                     onClick={() => toggleFAQ(actualIndex)}
                     className="w-full flex items-start justify-between text-left group"
@@ -197,7 +196,6 @@ const FAQSection = () => {
                     </div>
                   </button>
 
-                  {/* Answer */}
                   {openIndex === actualIndex && (
                     <div className="mt-4 pr-8">
                       <p className="font-mono text-xs md:text-sm text-white/70 leading-relaxed">

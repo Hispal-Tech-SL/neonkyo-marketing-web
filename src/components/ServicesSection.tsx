@@ -16,7 +16,7 @@ const services = [
         proyectos.
       </>
     ),
-    label: "SPECIALIST",
+    label: "ESPECIALISTAS",
   },
   {
     icon: "100% DIGITAL",
@@ -31,8 +31,8 @@ const services = [
     label: "DIGITAL",
   },
   {
-    icon: "AI POWERED",
-    title: "AI POWERED",
+    icon: "IMPULSADO POR IA",
+    title: "IMPULSADO POR IA",
     description: (
       <>
         Entrenamos nuestros propios modelos de Inteligencia Artificial de última
@@ -40,7 +40,7 @@ const services = [
         comunicación.
       </>
     ),
-    label: "AI POWERED",
+    label: "IMPULSADO POR IA",
   },
 ];
 
@@ -93,7 +93,7 @@ const ServicesSection = () => {
                   {index === 0 && (
                     <img
                       src="/assets/icons/Grupo 263.svg"
-                      alt="Specialists"
+                      alt="Especialistas"
                       className="w-full h-full object-contain"
                       style={{
                         filter:
@@ -115,7 +115,7 @@ const ServicesSection = () => {
                   {index === 2 && (
                     <img
                       src="/assets/icons/Grupo 265.svg"
-                      alt="AI Powered"
+                      alt="Impulsado por IA"
                       className="w-full h-full object-contain"
                       style={{
                         filter:

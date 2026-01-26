@@ -5,11 +5,11 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Services", href: "#services" },
-    { name: "FAQ's", href: "#faqs" },
-    { name: "Contact", href: "#contact" },
+    { name: "Inicio", href: "#home" },
+    { name: "Sobre", href: "#about" },
+    { name: "Servicios", href: "#services" },
+    { name: "Preguntas Frecuentes", href: "#faqs" },
+    { name: "Contacto", href: "#contact" },
   ];
 
   return (
@@ -47,7 +47,7 @@ const Header = () => {
           <button
             className="md:hidden text-primary p-2"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
+            aria-label="Alternar menú"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
