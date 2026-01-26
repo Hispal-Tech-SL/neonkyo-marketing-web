@@ -2,26 +2,54 @@ const services = [
   {
     icon: "ESPECIALISTAS",
     title: "ESPECIALISTAS",
-    description: "Nuestra agencia está especializada en branding y desarrollo de marcas, ofreciendo asesoramiento de alto nivel para todo tipo de proyectos.",
-    label: "SPECIALIST"
+    description: (
+      <>
+        Nuestra agencia está
+        <br />
+        especializada en branding y<br />
+        desarrollo de marcas,
+        <br />
+        ofreciendo asesoramiento de
+        <br />
+        alto nivel para todo tipo de
+        <br />
+        proyectos.
+      </>
+    ),
+    label: "SPECIALIST",
   },
   {
     icon: "100% DIGITAL",
     title: "100% DIGITAL",
-    description: "Apostamos por un modelo de negocio íntegramente digital. Si bien contamos con sede física, optamos por un modelo de teletrabajo y citas telemáticas.",
-    label: "DIGITAL"
+    description: (
+      <>
+        Apostamos por un modelo de negocio íntegramente digital. Si bien
+        contamos con sede física, optamos por un modelo de teletrabajo y citas
+        telemáticas.
+      </>
+    ),
+    label: "DIGITAL",
   },
   {
     icon: "AI POWERED",
     title: "AI POWERED",
-    description: "Entrenamos nuestros propios modelos de Inteligencia Artificial de última generación y los utilizamos para desarrollar estrategias avanzadas de comunicación.",
-    label: "AI POWERED"
+    description: (
+      <>
+        Entrenamos nuestros propios modelos de Inteligencia Artificial de última
+        generación y los utilizamos para desarrollar estrategias avanzadas de
+        comunicación.
+      </>
+    ),
+    label: "AI POWERED",
   },
 ];
 
 const ServicesSection = () => {
   return (
-    <section id="services" className="relative py-24 md:py-32 px-4 bg-black overflow-hidden">
+    <section
+      id="services"
+      className="relative py-24 md:py-32 px-4 bg-black overflow-hidden"
+    >
       {/* Grid Pattern Background */}
       <div className="absolute inset-0 bg-grid-cyber opacity-40 pointer-events-none" />
 
@@ -67,7 +95,10 @@ const ServicesSection = () => {
                       src="/assets/icons/Grupo 263.svg"
                       alt="Specialists"
                       className="w-full h-full object-contain"
-                      style={{ filter: 'brightness(0) saturate(100%) invert(84%) sepia(35%) saturate(836%) hue-rotate(1deg) brightness(108%) contrast(105%)' }}
+                      style={{
+                        filter:
+                          "brightness(0) saturate(100%) invert(84%) sepia(35%) saturate(836%) hue-rotate(1deg) brightness(108%) contrast(105%)",
+                      }}
                     />
                   )}
                   {index === 1 && (
@@ -75,7 +106,10 @@ const ServicesSection = () => {
                       src="/assets/icons/Grupo 264.svg"
                       alt="100% Digital"
                       className="w-full h-full object-contain"
-                      style={{ filter: 'brightness(0) saturate(100%) invert(84%) sepia(35%) saturate(836%) hue-rotate(1deg) brightness(108%) contrast(105%)' }}
+                      style={{
+                        filter:
+                          "brightness(0) saturate(100%) invert(84%) sepia(35%) saturate(836%) hue-rotate(1deg) brightness(108%) contrast(105%)",
+                      }}
                     />
                   )}
                   {index === 2 && (
@@ -83,7 +117,10 @@ const ServicesSection = () => {
                       src="/assets/icons/Grupo 265.svg"
                       alt="AI Powered"
                       className="w-full h-full object-contain"
-                      style={{ filter: 'brightness(0) saturate(100%) invert(84%) sepia(35%) saturate(836%) hue-rotate(1deg) brightness(108%) contrast(105%)' }}
+                      style={{
+                        filter:
+                          "brightness(0) saturate(100%) invert(84%) sepia(35%) saturate(836%) hue-rotate(1deg) brightness(108%) contrast(105%)",
+                      }}
                     />
                   )}
                 </div>
@@ -105,7 +142,9 @@ const ServicesSection = () => {
                   href="#contact"
                   className="inline-block w-full md:w-auto min-w-[200px] px-8 py-3 bg-[#FF0000] text-white font-mono text-sm font-bold uppercase tracking-wider hover:bg-red-600 transition-all duration-300 transform -skew-x-12 text-center"
                 >
-                  <span className="inline-block transform skew-x-12">SABER MÁS</span>
+                  <span className="inline-block transform skew-x-12">
+                    SABER MÁS
+                  </span>
                 </a>
               </div>
             </div>

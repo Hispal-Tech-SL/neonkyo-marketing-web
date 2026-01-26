@@ -4,11 +4,11 @@ const AboutSection = () => {
       id="about"
       className="relative py-24 md:py-32 px-4 bg-[#DCE512] overflow-hidden"
       style={{
-        clipPath: "polygon(0 10px, 10px 0, 20% 0, 21% 10px, 79% 10px, 80% 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 80% 100%, 79% calc(100% - 10px), 21% calc(100% - 10px), 20% 100%, 10px 100%, 0 calc(100% - 10px))"
+        clipPath:
+          "polygon(0 10px, 10px 0, 20% 0, 21% 10px, 79% 10px, 80% 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 80% 100%, 79% calc(100% - 10px), 21% calc(100% - 10px), 20% 100%, 10px 100%, 0 calc(100% - 10px))",
       }}
     >
       <div className="container mx-auto max-w-4xl relative z-10">
-
         {/* Logo Container with Brackets */}
         <div className="relative mb-12 flex justify-center">
           <div className="relative p-8 inline-block">
@@ -22,7 +22,10 @@ const AboutSection = () => {
               <h2 className="font-japanese text-6xl md:text-8xl lg:text-9xl text-black leading-none mb-1 tracking-tighter">
                 ネオン京
               </h2>
-              <p className="text-3xl md:text-5xl text-black tracking-tighter" style={{ fontFamily: 'Impact, sans-serif' }}>
+              <p
+                className="text-3xl md:text-5xl text-black tracking-tighter"
+                style={{ fontFamily: "Impact, sans-serif" }}
+              >
                 neonkyo <span className="font-japanese">スタジオ</span>
               </p>
             </div>
@@ -32,11 +35,14 @@ const AboutSection = () => {
         {/* Description text */}
         <div className="text-center max-w-3xl mx-auto mb-16 px-4">
           <p className="font-mono text-sm md:text-base lg:text-lg text-black leading-relaxed font-bold tracking-tight">
-            Neonkyo Studio es el <span className="font-black">futuro del marketing y la publicidad</span>.
-            Especialistas en el <span className="font-black">desarrollo de nuevos proyectos</span> y marcas desde cero. <span className="font-black">Gracias a nuestra IA</span>,
-            ofrecemos soluciones y estrategias de comunicación extremadamente precisas y eficaces, adaptadas a las
-            necesidades de cada proyecto. Somos la primera agencia de comunicación <span className="font-black">100% Digital</span> del mundo. Una
-            Agencia de Publicidad originaria de Japón, con sede en España, y <span className="font-black">trabajando en todo el mundo</span>.
+            Neonkyo Studio es el futuro del marketing y la publicidad.
+            Especialistas en el desarrollo de nuevos proyectos y marcas desde
+            cero. Gracias a nuestra IA, ofrecemos soluciones y estrategias de
+            comunicación extremadamente precisas y eficaces, adaptadas a las
+            necesidades de cada proyecto. Somos la primera agencia de
+            comunicación 100% Digital del mundo. Una Agencia de Publicidad
+            originaria de Japón, con sede en España, y trabajando en todo el
+            mundo.
           </p>
         </div>
 
