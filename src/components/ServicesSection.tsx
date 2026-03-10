@@ -34,13 +34,13 @@ const ServicesSection = () => {
                 <div className="absolute bottom-0 left-0 w-8 h-8 border-b-[3px] border-l-[3px] border-primary" />
                 <div className="absolute bottom-0 right-0 w-8 h-8 border-b-[3px] border-r-[3px] border-primary" />
 
-                {/* Small Label - Two lines */}
-                <div className="absolute -top-1 -right-6 transform translate-x-full">
-                  <div className="flex flex-col items-start">
-                    <span className="font-mono text-[10px] text-white uppercase tracking-wider leading-none mb-1">
+                {/* Small Label - Mobile above icon, desktop right side */}
+                <div className="absolute -top-8 left-1/2 -translate-x-1/2 md:-top-1 md:left-auto md:right-0 md:translate-x-full md:translate-y-0">
+                  <div className="flex flex-col items-center md:items-start">
+                    <span className="font-mono text-[9px] md:text-[10px] text-white uppercase tracking-wider leading-none mb-1 whitespace-nowrap">
                       {service.label}
                     </span>
-                    <span className="font-mono text-[10px] text-white uppercase tracking-wider leading-none">
+                    <span className="font-mono text-[9px] md:text-[10px] text-white uppercase tracking-wider leading-none whitespace-nowrap">
                       &lt;&lt;
                     </span>
                   </div>
