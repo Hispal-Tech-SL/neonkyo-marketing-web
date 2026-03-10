@@ -274,7 +274,7 @@ DEF ACCEDER_BASE_DATOS():
         <div className="relative z-10 w-full h-full px-4">
           {/* Top section */}
           <div className="absolute top-14 right-4 text-right">
-            <div className="scale-[0.82] origin-top-right">
+            <div className="scale-[0.82] origin-top-right bg-black/40 border border-white/10 px-2 py-1 rounded-sm backdrop-blur-[1px]">
               <TopInfoMobile />
             </div>
           </div>
@@ -282,19 +282,26 @@ DEF ACCEDER_BASE_DATOS():
           {/* Center area - Logo positioned */}
           <div className="absolute top-12 right-2 z-40 pointer-events-none">
             <div className="relative">
-              <div className="px-2 py-1">
+              <div className="px-2 py-1 bg-black/35 border border-primary/25 rounded-sm backdrop-blur-[1px]">
                 <h1
-                  className="text-[64px] text-primary leading-none tracking-tight italic drop-shadow-lg"
+                  className="text-[64px] text-primary leading-none tracking-tight italic"
                   style={{
                     fontFamily: "Seriguela",
                     fontWeight: "400",
-                    textShadow: "0 0 2px rgba(59, 255, 0, 0.5)",
-                    WebkitTextStroke: "0.5px currentColor",
+                    textShadow:
+                      "0 2px 8px rgba(0, 0, 0, 0.9), 0 0 6px rgba(59, 255, 0, 0.35)",
+                    WebkitTextStroke: "0.7px rgba(0, 0, 0, 0.75)",
                   }}
                 >
                   neonkyo
                 </h1>
-                <p className="font-japanese text-[22px] text-primary leading-none">
+                <p
+                  className="font-japanese text-[22px] text-primary leading-none"
+                  style={{
+                    textShadow: "0 1px 5px rgba(0, 0, 0, 0.9)",
+                    WebkitTextStroke: "0.4px rgba(0, 0, 0, 0.7)",
+                  }}
+                >
                   ネオン京
                 </p>
               </div>
@@ -302,10 +309,10 @@ DEF ACCEDER_BASE_DATOS():
           </div>
 
           {/* Bottom section */}
-          <div className="absolute inset-x-4 bottom-24 space-y-1.5">
+          <div className="absolute inset-x-4 bottom-24 space-y-1.5 bg-black/35 border border-white/10 rounded-sm p-2 backdrop-blur-[2px]">
             {/* Description text */}
             <div className="text-left">
-              <p className="font-mono text-[6px] text-white/40 leading-relaxed tracking-widest">
+              <p className="font-mono text-[8px] text-white/80 leading-relaxed tracking-widest drop-shadow-[0_1px_2px_rgba(0,0,0,0.95)]">
                 {t("hero.subtitle")}
                 <br />
                 {t("hero.slide_prompt")}
@@ -314,17 +321,29 @@ DEF ACCEDER_BASE_DATOS():
 
             {/* Decorative text */}
             <div className="text-left">
-              <p className="font-mono text-[6px] text-white/30 leading-relaxed tracking-widest">
+              <p className="font-mono text-[8px] text-white/55 leading-relaxed tracking-widest drop-shadow-[0_1px_2px_rgba(0,0,0,0.95)]">
                 &lt;&lt;
               </p>
             </div>
 
             {/* Hero titles */}
             <div className="mb-1">
-              <h2 className="font-japanese text-[32px] text-white leading-none font-bold drop-shadow-lg">
+              <h2
+                className="font-japanese text-[32px] text-white leading-none font-bold"
+                style={{
+                  textShadow: "0 2px 8px rgba(0, 0, 0, 0.95)",
+                  WebkitTextStroke: "0.4px rgba(0, 0, 0, 0.75)",
+                }}
+              >
                 広告の未来
               </h2>
-              <h2 className="font-display text-[40px] text-white italic leading-[0.9] font-bold tracking-tight drop-shadow-lg mt-0.5 whitespace-pre-line">
+              <h2
+                className="font-display text-[40px] text-white italic leading-[0.9] font-bold tracking-tight mt-0.5 whitespace-pre-line"
+                style={{
+                  textShadow: "0 2px 8px rgba(0, 0, 0, 0.95)",
+                  WebkitTextStroke: "0.45px rgba(0, 0, 0, 0.75)",
+                }}
+              >
                 {t("hero.future")}
               </h2>
             </div>
@@ -335,19 +354,19 @@ DEF ACCEDER_BASE_DATOS():
                 ref={mobileSliderRef}
                 onMouseDown={handleMouseDown}
                 onTouchStart={handleTouchStart}
-                className={`relative w-full h-11 overflow-hidden border-2 border-accent/60 flex items-stretch cursor-grab active:cursor-grabbing transition-all duration-300 ${
+                className={`relative w-full h-11 overflow-hidden border-2 border-accent/80 bg-black/55 shadow-[0_0_0_1px_rgba(255,255,255,0.12),0_10px_24px_rgba(0,0,0,0.6)] flex items-stretch cursor-grab active:cursor-grabbing transition-all duration-300 ${
                   !isFullyUnlocked ? "slider-blinking" : ""
                 }`}
                 style={{
                   borderColor:
                     dragProgress > 0
                       ? "rgb(239, 68, 68)"
-                      : "rgba(239, 68, 68, 0.6)",
+                      : "rgba(239, 68, 68, 0.85)",
                 }}
               >
                 {/* Progress background */}
                 <div
-                  className="absolute left-0 top-0 h-full bg-accent/20 z-0"
+                  className="absolute left-0 top-0 h-full bg-accent/30 z-0"
                   style={{
                     width: `${dragProgress}%`,
                     transition: isDragging ? "none" : "all 75ms",
@@ -356,7 +375,7 @@ DEF ACCEDER_BASE_DATOS():
 
                 {/* Slider thumb - Left arrow section that moves */}
                 <div
-                  className="absolute h-full bg-accent flex items-center justify-center z-10"
+                  className="absolute h-full bg-accent flex items-center justify-center z-10 shadow-[0_0_10px_rgba(239,68,68,0.5)]"
                   style={{
                     width: "44px",
                     left: "0",
@@ -367,14 +386,14 @@ DEF ACCEDER_BASE_DATOS():
                     transition: isDragging ? "none" : "all 75ms",
                   }}
                 >
-                  <span className="text-white text-lg font-bold leading-none select-none pointer-events-none">
+                  <span className="text-white text-lg font-bold leading-none select-none pointer-events-none drop-shadow-[0_1px_2px_rgba(0,0,0,0.95)]">
                     ›
                   </span>
                 </div>
 
                 {/* Text section */}
                 <div className="flex-1 flex items-center justify-center z-0 pointer-events-none">
-                  <span className="font-mono text-white/60 uppercase tracking-[0.2em] text-[8px] select-none">
+                  <span className="font-mono text-white/90 uppercase tracking-[0.2em] text-[9px] select-none drop-shadow-[0_1px_2px_rgba(0,0,0,0.95)]">
                     {isFullyUnlocked ? t("hero.unlock") : t("hero.access")}
                   </span>
                 </div>
