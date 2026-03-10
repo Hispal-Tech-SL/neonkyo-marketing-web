@@ -272,39 +272,17 @@ DEF ACCEDER_BASE_DATOS():
 
         {/* Content overlay */}
         <div className="relative z-10 w-full h-full px-4">
-          {/* Top section */}
-          <div className="absolute top-14 right-4 text-right">
+          {/* Logo + info box stacked */}
+          <div className="absolute top-14 right-2 z-40 pointer-events-none flex flex-col items-end gap-1">
+            <div className="px-2 py-1 bg-black/35 border border-primary/25 rounded-sm backdrop-blur-[1px]">
+              <img
+                src="/assets/images/logo completo.svg"
+                alt="Neonkyo Estudio"
+                className="w-80"
+              />
+            </div>
             <div className="scale-[0.82] origin-top-right bg-black/40 border border-white/10 px-2 py-1 rounded-sm backdrop-blur-[1px]">
               <TopInfoMobile />
-            </div>
-          </div>
-
-          {/* Center area - Logo positioned */}
-          <div className="absolute top-12 right-2 z-40 pointer-events-none">
-            <div className="relative">
-              <div className="px-2 py-1 bg-black/35 border border-primary/25 rounded-sm backdrop-blur-[1px]">
-                <h1
-                  className="text-[64px] text-primary leading-none tracking-tight italic"
-                  style={{
-                    fontFamily: "Seriguela",
-                    fontWeight: "400",
-                    textShadow:
-                      "0 2px 8px rgba(0, 0, 0, 0.9), 0 0 6px rgba(59, 255, 0, 0.35)",
-                    WebkitTextStroke: "0.7px rgba(0, 0, 0, 0.75)",
-                  }}
-                >
-                  neonkyo
-                </h1>
-                <p
-                  className="font-japanese text-[22px] text-primary leading-none"
-                  style={{
-                    textShadow: "0 1px 5px rgba(0, 0, 0, 0.9)",
-                    WebkitTextStroke: "0.4px rgba(0, 0, 0, 0.7)",
-                  }}
-                >
-                  ネオン京
-                </p>
-              </div>
             </div>
           </div>
 
@@ -431,46 +409,13 @@ DEF ACCEDER_BASE_DATOS():
             </p>
           </div>
 
-          {/* Logo with brackets */}
+          {/* Logo */}
           <div className="relative mt-12">
-            {/* Corner brackets */}
-            <span className="absolute -top-6 -left-6 text-primary text-5xl leading-none">
-              ┌
-            </span>
-            <span className="absolute -top-6 -right-6 text-primary text-5xl leading-none">
-              ┐
-            </span>
-            <span className="absolute -bottom-6 -left-6 text-primary text-5xl leading-none">
-              └
-            </span>
-            <span className="absolute -bottom-6 -right-6 text-primary text-5xl leading-none">
-              ┘
-            </span>
-
-            <div className="px-8 py-6">
-              <h1
-                className="text-[160px] text-primary leading-none tracking-tight italic drop-shadow-lg"
-                style={{
-                  fontFamily: "Seriguela",
-                  fontWeight: "400",
-                  textShadow: "0 0 2px rgba(59, 255, 0, 0.5)",
-                  WebkitTextStroke: "0.5px currentColor",
-                }}
-              >
-                neonkyo
-              </h1>
-              <div className="flex items-center justify-end gap-1 mt-1 whitespace-nowrap">
-                <p className="font-japanese text-3xl text-primary leading-none">
-                  ネオン京
-                </p>
-                <p
-                  className="font-display text-3xl text-primary italic leading-none"
-                  style={{ fontFamily: "Seriguela", fontWeight: "400" }}
-                >
-                  estudio
-                </p>
-              </div>
-            </div>
+            <img
+              src="/assets/images/logo completo.svg"
+              alt="Neonkyo Estudio"
+              className="w-full"
+            />
           </div>
 
           {/* Description text */}
