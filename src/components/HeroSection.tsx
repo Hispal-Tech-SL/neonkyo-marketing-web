@@ -2,19 +2,21 @@ import { useState, useRef, useEffect } from "react";
 import { useSlideUnlock } from "@/hooks/useSlideUnlock";
 import { useI18n } from "@/i18n/i18n";
 
-const LanguageSelector: React.FC = () => {
+const LanguageSelector: React.FC<{ compact?: boolean }> = ({ compact = false }) => {
   const { lang, setLang } = useI18n();
   return (
-    <div className="flex items-center gap-2 bg-black/60 px-2 py-1 rounded border border-primary/40 shadow-[0_6px_18px_rgba(59,255,0,0.07)]">
+    <div
+      className={`flex items-center ${compact ? "gap-1 px-1.5 py-1" : "gap-2 px-2 py-1"} bg-black/60 rounded border border-primary/40 shadow-[0_6px_18px_rgba(59,255,0,0.07)]`}
+    >
       <button
         onClick={() => setLang("es")}
-        className={`px-2 py-1 text-sm ${lang === "es" ? "bg-primary text-black font-bold" : "text-white/80"}`}
+        className={`${compact ? "px-1.5 py-0.5 text-xs" : "px-2 py-1 text-sm"} ${lang === "es" ? "bg-primary text-black font-bold" : "text-white/80"}`}
       >
         ES
       </button>
       <button
         onClick={() => setLang("en")}
-        className={`px-2 py-1 text-sm ${lang === "en" ? "bg-primary text-black font-bold" : "text-white/80"}`}
+        className={`${compact ? "px-1.5 py-0.5 text-xs" : "px-2 py-1 text-sm"} ${lang === "en" ? "bg-primary text-black font-bold" : "text-white/80"}`}
       >
         EN
       </button>
@@ -221,7 +223,7 @@ const HeroSection = () => {
     <section
       id="home"
       className="relative w-full overflow-hidden bg-black"
-      style={{ height: "100vh", marginTop: "0" }}
+      style={{ minHeight: "100svh", height: "100dvh", marginTop: "0" }}
     >
       {/* Background with code pattern */}
       <div className="absolute inset-0 opacity-5 text-[8px] leading-tight overflow-hidden pointer-events-none">
@@ -242,31 +244,35 @@ DEF ACCEDER_BASE_DATOS():
         </pre>
       </div>
 
-      {/* Top left corner icon + language selector debajo */}
-      <div className="absolute top-6 md:top-8 left-4 md:left-8 text-primary text-5xl md:text-6xl font-bold z-50 leading-none relative">
+      {/* Top left corner icon */}
+      <div className="absolute top-2 left-4 md:top-8 md:left-8 text-primary text-5xl md:text-6xl font-bold z-50 leading-none relative">
         京
-        <div className="absolute left-0 top-full mt-4 md:mt-6">
+        <div className="hidden md:block absolute left-0 top-full mt-6">
           <LanguageSelector />
         </div>
       </div>
 
+      {/* Mobile language selector kept separate to avoid overlaying hero content */}
+      <div className="md:hidden absolute top-3 right-4 z-50 scale-90 origin-top-right">
+        <LanguageSelector compact />
+      </div>
+
       {/* MOBILE VERSION */}
-      <div className="md:hidden relative z-10 w-full h-full flex flex-col">
+      <div className="md:hidden relative z-10 w-full h-full">
         {/* Hero image - centered, anchored to bottom, very large */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden z-0">
+        <div className="absolute inset-0 flex items-start justify-center pointer-events-none overflow-hidden z-0 pt-8 -translate-y-16">
           <img
             src="/assets/images/hero-image.png"
             alt="Neonkyo Estudio - Ciborg"
-            className="w-full h-full object-cover object-center z-10"
+            className="w-full h-full object-cover object-top z-10 scale-[1.14]"
           />
         </div>
 
         {/* Content overlay */}
-        <div className="relative z-10 w-full h-full flex flex-col justify-between px-4 pt-3 pb-4">
+        <div className="relative z-10 w-full h-full px-4">
           {/* Top section */}
-          <div className="flex justify-end">
-            {/* Top info text - right aligned */}
-            <div className="text-right">
+          <div className="absolute top-14 right-4 text-right">
+            <div className="scale-[0.82] origin-top-right">
               <TopInfoMobile />
             </div>
           </div>
@@ -276,7 +282,7 @@ DEF ACCEDER_BASE_DATOS():
             <div className="relative">
               <div className="px-2 py-1">
                 <h1
-                  className="text-[85px] text-primary leading-none tracking-tight italic drop-shadow-lg"
+                  className="text-[64px] text-primary leading-none tracking-tight italic drop-shadow-lg"
                   style={{
                     fontFamily: "Seriguela",
                     fontWeight: "400",
@@ -286,7 +292,7 @@ DEF ACCEDER_BASE_DATOS():
                 >
                   neonkyo
                 </h1>
-                <p className="font-japanese text-[28px] text-primary leading-none">
+                <p className="font-japanese text-[22px] text-primary leading-none">
                   ネオン京
                 </p>
               </div>
@@ -294,7 +300,7 @@ DEF ACCEDER_BASE_DATOS():
           </div>
 
           {/* Bottom section */}
-          <div className="space-y-2">
+          <div className="absolute inset-x-4 bottom-24 space-y-1.5">
             {/* Description text */}
             <div className="text-left">
               <p className="font-mono text-[6px] text-white/40 leading-relaxed tracking-widest">
@@ -312,22 +318,22 @@ DEF ACCEDER_BASE_DATOS():
             </div>
 
             {/* Hero titles */}
-            <div className="mb-2">
-              <h2 className="font-japanese text-[42px] text-white leading-none font-bold drop-shadow-lg">
+            <div className="mb-1">
+              <h2 className="font-japanese text-[32px] text-white leading-none font-bold drop-shadow-lg">
                 広告の未来
               </h2>
-              <h2 className="font-display text-[56px] text-white italic leading-[0.9] font-bold tracking-tight drop-shadow-lg mt-1 whitespace-pre-line">
+              <h2 className="font-display text-[40px] text-white italic leading-[0.9] font-bold tracking-tight drop-shadow-lg mt-0.5 whitespace-pre-line">
                 {t("hero.future")}
               </h2>
             </div>
 
             {/* CTA Button - Slider */}
-            <div className="mt-3 w-full">
+            <div className="mt-1.5 w-full">
               <div
                 ref={mobileSliderRef}
                 onMouseDown={handleMouseDown}
                 onTouchStart={handleTouchStart}
-                className={`relative w-full h-14 overflow-hidden border-2 border-accent/60 flex items-stretch cursor-grab active:cursor-grabbing transition-all duration-300 ${
+                className={`relative w-full h-11 overflow-hidden border-2 border-accent/60 flex items-stretch cursor-grab active:cursor-grabbing transition-all duration-300 ${
                   !isFullyUnlocked ? "slider-blinking" : ""
                 }`}
                 style={{
@@ -350,23 +356,23 @@ DEF ACCEDER_BASE_DATOS():
                 <div
                   className="absolute h-full bg-accent flex items-center justify-center z-10"
                   style={{
-                    width: "56px",
+                    width: "44px",
                     left: "0",
                     transform: `translateX(${
                       (dragProgress / 100) *
-                      ((mobileSliderRef.current?.offsetWidth || 0) - 56)
+                      ((mobileSliderRef.current?.offsetWidth || 0) - 44)
                     }px)`,
                     transition: isDragging ? "none" : "all 75ms",
                   }}
                 >
-                  <span className="text-white text-xl font-bold leading-none select-none pointer-events-none">
+                  <span className="text-white text-lg font-bold leading-none select-none pointer-events-none">
                     ›
                   </span>
                 </div>
 
                 {/* Text section */}
                 <div className="flex-1 flex items-center justify-center z-0 pointer-events-none">
-                  <span className="font-mono text-white/60 uppercase tracking-widest text-[9px] select-none">
+                  <span className="font-mono text-white/60 uppercase tracking-[0.2em] text-[8px] select-none">
                     {isFullyUnlocked ? t("hero.unlock") : t("hero.access")}
                   </span>
                 </div>
