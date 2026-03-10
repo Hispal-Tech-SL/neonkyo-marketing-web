@@ -2,7 +2,9 @@ import { useState, useRef, useEffect } from "react";
 import { useSlideUnlock } from "@/hooks/useSlideUnlock";
 import { useI18n } from "@/i18n/i18n";
 
-const LanguageSelector: React.FC<{ compact?: boolean }> = ({ compact = false }) => {
+const LanguageSelector: React.FC<{ compact?: boolean }> = ({
+  compact = false,
+}) => {
   const { lang, setLang } = useI18n();
   return (
     <div
